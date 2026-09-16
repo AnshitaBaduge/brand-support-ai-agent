@@ -86,6 +86,14 @@ _not yet implemented._
 
 ## reply generation
 
+### architecture (chunk 8)
+- **retriever:** tfidf cosine-similarity (20k features, unigrams+bigrams, sublinear_tf)
+- **index:** 91,236 substantive non-dm-redirect threads from cleaned_threads.json
+- **top-k:** 5 retrieved neighbors per query (self-match excluded)
+- **template replier (baseline):** returns top-1 retrieved historical brand reply — no generation
+- **llm replier:** intent-aware opener + top-1 retrieved reply (mock); real: gpt-4o-mini with top-3 as context
+- **retrieval quality:** top-1 cosine scores range 0.15–0.45 on golden set after self-match exclusion
+
 ### automated metrics
 
 | metric | score | notes |

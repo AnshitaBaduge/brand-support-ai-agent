@@ -141,3 +141,10 @@ after each meaningful action — code edit, dependency change, dataset preparati
 - `[chunk-7]` outputs saved: outputs/llm_intent_predictions.json, outputs/metrics_intent_llm.json
 - `[chunk-7]` committed and pushed: "chunk 7: llm few-shot intent classifier with mock fallback"
 - `[next]` chunk 8: reply generation — retrieve top-k similar historical replies, draft via llm or template
+- `[chunk-8]` implemented TfidfRetriever — cosine-similarity index over 91,236 non-dm threads (20k features)
+- `[chunk-8]` implemented TemplateReplier (retrieval-only baseline) and LlmReplier (mock + real api path)
+- `[chunk-8]` fixed self-match bug — excluded exact query matches from retrieval results
+- `[chunk-8]` generated reply_outputs.json for full 240 golden set rows (template + llm draft per row)
+- `[chunk-8]` top-1 cosine scores: 0.15–0.45 after self-match exclusion (genuine neighbors)
+- `[chunk-8]` committed and pushed: "chunk 8: reply generation pipeline — tfidf retriever + template + llm replier"
+- `[next]` chunk 9: escalation router — rule-based + llm classifier using golden set escalation labels
