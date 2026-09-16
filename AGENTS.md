@@ -100,3 +100,11 @@ after each meaningful action — code edit, dependency change, dataset preparati
 - `[chunk-1]` raw data not yet downloaded — kaggle credentials missing; see data_prep.py for instructions
 - `[chunk-1]` committed and pushed: "chunk 1: project skeleton, src stubs, requirements, decision log"
 - `[blocker]` dataset download pending: need kaggle api credentials or manual download of twcs.csv → data/raw/twcs.csv
+- `[chunk-2]` twcs.csv placed in data/raw/ by user (516 MB, 2,811,774 rows)
+- `[chunk-2]` explored top 30 brands by reply count; analyzed top 5 candidates in detail
+- `[chunk-2]` selected brand: AppleSupport — 99.8% thread completeness, 106,648 threads, avg 137 char replies
+- `[chunk-2]` saved data/brand_conversations.csv (213,483 rows, 39 MB) and data/clean_threads.json (106,648 threads, 44 MB)
+- `[chunk-2]` updated decision_log.md #1 with brand selection rationale
+- `[chunk-2]` created src/chunk2_explore.py (reusable brand filter + thread builder)
+- `[chunk-2]` committed and pushed: "chunk 2: brand selection (applesupport), filter data, build threads"
+- `[next]` chunk 3: data cleaning — strip urls, @mentions, normalize whitespace, handle edge cases

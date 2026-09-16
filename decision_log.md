@@ -6,9 +6,15 @@ updated as decisions are made.
 ---
 
 ## 1. brand selection
-- **decision:** _tbd — will be chosen in chunk 2 after inspecting tweet volume per brand_
-- **options considered:** amazon, apple support, spotify, delta airlines, ask lyft
-- **criterion:** min ~500 inbound threads; variety of intent types; brand with clear "voice"
+- **decision:** `AppleSupport`
+- **options considered:** AmazonHelp (169k), AppleSupport (106k), Uber_Support (56k), SpotifyCares (43k), Delta (42k)
+- **reasoning:**
+  - 99.8% thread completeness (106,623 matched inbound out of 106,860 replies) — best ratio
+  - avg brand reply length 137 chars — most informative replies
+  - english-dominant, well-known support voice
+  - rich intent diversity: device bugs, account issues, payment, software, connectivity
+  - amazon had multilingual tweets; delta had lower completeness ratio
+- **data:** 106,648 complete threads saved to `data/clean_threads.json`
 
 ## 2. subsampling strategy
 - **decision:** work on a subsample of the full dataset (~3m tweets)

@@ -1,6 +1,11 @@
 """
 data_prep.py — load, clean, and filter the twitter customer-support dataset.
 run this first to prepare data before any other scripts.
+
+brand selected: AppleSupport (chunk 2 decision)
+- 106,860 brand replies, 106,623 matched inbound threads
+- avg reply length: 137 chars — detailed and informative
+- ~99.8% thread completeness — best among top brands
 """
 
 import os
@@ -11,6 +16,10 @@ import pandas as pd
 RAW_PATH = os.path.join("data", "raw", "twcs.csv")
 BRAND_CONV_PATH = os.path.join("data", "brand_conversations.csv")
 CLEAN_PATH = os.path.join("data", "clean_threads.json")
+
+# chosen brand — locked after chunk 2 exploration
+BRAND_ID = "AppleSupport"
+
 
 # ------------------------------------------------------------------
 # helpers
