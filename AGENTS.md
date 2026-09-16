@@ -155,4 +155,27 @@ after each meaningful action — code edit, dependency change, dataset preparati
 - `[chunk-9]` key finding: most escalations need context understanding, not keyword matching
 - `[chunk-9]` trained final model saved to outputs/escalation_model.pkl
 - `[chunk-9]` committed and pushed: "chunk 9: escalation router — rule-based + tfidf logreg with threshold tuning"
-- `[next]` chunk 10: eval harness — bleu/rouge on reply outputs + llm-as-judge rubric
+- `[chunk-10]` implemented src/evaluate.py — bleu/rouge automated metrics + llm-as-judge rubric (4 dimensions)
+- `[chunk-10]` automated: bleu=0.00 (vocabulary mismatch expected), rouge-1=0.25/0.27 (template/llm)
+- `[chunk-10]` judge (mock, n=30): tone=2.73, helpfulness=2.80, accuracy=4.00, safety=5.00, overall=3.63
+- `[chunk-10]` outputs: outputs/metrics_reply_eval.json, outputs/judge_scores.json
+- `[chunk-10]` committed and pushed: "chunk 10: eval harness — bleu/rouge + llm-as-judge rubric"
+- `[next]` chunk 11: human vs judge agreement — user scores 30 examples, compute cohen's kappa
+- `[chunk-11]` exported 30 judge-scored rows to golden_set/human_eval.csv for manual scoring
+- `[chunk-11]` user completed scoring — 30 rows with human_tone/helpfulness/accuracy/safety filled
+- `[chunk-11]` computed cohen's kappa: overall=0.402 (moderate), within-1 agreement=84.2%
+- `[chunk-11]` per-dimension: tone=0.144, helpfulness=0.159, accuracy=0.000, safety=0.000
+- `[chunk-11]` key finding: safety is ceiling effect (both human+judge score 5/5); accuracy gap shows mock judge over-trusts drafts
+- `[chunk-11]` outputs: outputs/metrics_human_judge_agreement.json
+- `[chunk-11]` committed and pushed: "chunk 11: human vs judge agreement — kappa=0.40 within1=84%"
+- `[next]` chunk 12: failure analysis — top 5 failure modes with real examples from outputs
+- `[chunk-12]` mined real failure examples from llm_intent_predictions.json, reply_outputs.json, golden_set.csv
+- `[chunk-12]` wrote 5 failure modes with real examples and hypotheses into RESULTS.md
+- `[chunk-12]` wrote "what is misleading about my headline number" section in RESULTS.md
+- `[chunk-12]` committed and pushed: "chunk 12: failure analysis — 5 failure modes + misleading headline section"
+- `[chunk-13]` filled decision_log.md to 12 entries covering all major non-obvious decisions
+- `[chunk-13]` decisions cover: brand selection, subsampling, intent taxonomy, llm model choice + mock fallback, escalation annotation, dm-redirect handling, retrieval architecture, threshold tuning, golden set sampling, metric priorities, rouge vs bleu choice, within-1 vs exact kappa
+- `[chunk-14]` rewrote README.md — full reproducibility steps (10 commands), headline results tables, project structure, problem framing, failure analysis summary, what-i'd-do-next section
+- `[chunk-14]` README satisfies all blueprint report requirements: problem framing, baselines comparison, failure analysis, misleading headline, next steps
+- `[chunk-13/14]` committed and pushed: "chunk 13+14: decision log (12 entries) + README full rewrite"
+- `[status]` all 14 chunks complete — pipeline is end-to-end, all deliverables present

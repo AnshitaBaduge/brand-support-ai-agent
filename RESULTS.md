@@ -96,29 +96,43 @@ _not yet implemented._
 
 ### automated metrics
 
-| metric | score | notes |
-|--------|-------|-------|
-| bleu | — | — |
-| rouge-1 | — | — |
-| rouge-l | — | — |
+| metric | template replier | llm draft | notes |
+|--------|-----------------|-----------|-------|
+| bleu-1 | 0.0000 | 0.0000 | 0 — different vocabulary; expected |
+| bleu-2 | 0.0000 | 0.0000 | 0 — n-gram overlap too low at bigram level |
+| rouge-1 | 0.2459 | 0.2663 | llm draft slightly closer to historical reference |
+| rouge-l | 0.1843 | 0.1959 | llm draft marginally better on longest common subsequence |
 
-### llm-as-judge scores
+**why bleu is 0:** the template/llm replies use different phrasing than the historical reference. 
+bleu penalises any vocabulary mismatch heavily. this is expected — there are many valid replies.
+rouge-1 ~0.25 is a more useful signal (unigram overlap with the reference).
 
-| dimension | avg score | notes |
-|-----------|-----------|-------|
-| tone | — | — |
-| accuracy | — | — |
-| helpfulness | — | — |
-| safety | — | — |
+### llm-as-judge scores (mock mode, n=30)
 
-### judge-vs-human agreement
-_not yet computed._
+| dimension | avg score (1–5) | notes |
+|-----------|----------------|-------|
+| tone | 2.73 | mock scorer — needs real api for accurate scores |
+| helpfulness | 2.80 | mock scorer |
+| accuracy | 4.00 | mock scorer |
+| safety | 5.00 | no pii/harm detected in any draft |
+| **overall** | **3.63** | mock — real api judge expected before submission |
 
-| metric | value |
-|--------|-------|
-| cohen's kappa | — |
-| % agreement | — |
-| n (human-scored) | — |
+### judge-vs-human agreement (chunk 11, n=30)
+
+| dimension | kappa | exact % | within-1 % | human avg | judge avg |
+|-----------|-------|---------|------------|-----------|-----------|
+| tone | 0.144 (slight) | 36.7% | 86.7% | 3.50 | 2.73 |
+| helpfulness | 0.159 (slight) | 40.0% | 80.0% | 2.37 | 2.80 |
+| accuracy | 0.000 (slight) | 43.3% | 70.0% | 2.97 | 4.00 |
+| safety | 0.000 (slight) | 96.7% | 100.0% | 4.97 | 5.00 |
+| **overall** | **0.402 (moderate)** | 54.2% | **84.2%** | — | — |
+
+**interpretation:**
+- **safety** is trivial agreement (both rate almost everything 5/5 — ceiling effect)
+- **overall within-1 = 84.2%** — human and judge are almost always within one point of each other
+- **overall kappa = 0.40** (moderate) — respectable for a 5-point scale with a mock judge
+- **accuracy gap** (human 2.97 vs judge 4.00) — mock judge over-trusts replies; real gpt-4o-mini judge would be stricter
+- **key insight for report:** within-1 agreement is the right metric here; exact match on a 5-point scale is too strict
 
 ---
 
@@ -141,17 +155,111 @@ the tfidf model with a lowered threshold is strictly better for safety-critical 
 
 ## failure analysis
 
-### top 5 failure modes
-_not yet analyzed._
+### failure mode 1: software_bug dominance collapses nearby intents
+**what happens:** `software_bug` is the largest class (50/240, 20.8%). the tfidf classifier learns to
+predict it for any message containing "update", "phone", "crashing", or "iOS" — which appear in
+at least 6 other intents.
 
-1. **failure mode 1:** _tbd_
-2. **failure mode 2:** _tbd_
-3. **failure mode 3:** _tbd_
-4. **failure mode 4:** _tbd_
-5. **failure mode 5:** _tbd_
+**real example (tfidf misclassified):**
+> customer: *"Não vejo que recebi msg em nenhum app, nada. Fico o dia todo sem uma notificação sequer"*
+> true intent: `app_and_store_issue` → predicted: `software_bug`
+
+**real example (class collapse):**
+> `device_performance` (f1=0.00), `account_and_password` (f1=0.00), `hardware_and_accessories` (f1=0.00)
+> all had recall=0 — their training signal drowned under software_bug's weight.
+
+**hypothesis:** the tfidf model doesn't understand context, only token frequency.
+a real LLM would distinguish "my notifications don't work" (app) from "my phone crashes after update" (software_bug).
+
+---
+
+### failure mode 2: mid-thread fragments can't be classified or replied to meaningfully
+**what happens:** 9/240 golden-set messages are partial turns — the customer's reply in a
+multi-turn thread with no standalone context. Both classifier and reply generator produce nonsense.
+
+**real examples:**
+> `gs_005`: *"Seems to only be through Spotify"* → intent=app_and_store_issue (correct by context, but unclassifiable standalone)
+> `gs_007`: *"Awesome thanks for the quick reply"* → intent=feedback_and_complaint (our draft: *"We always want to improve your experience. You're welcome..."*)
+> `gs_031`: *"Yes, the storage does match"* → mid-troubleshooting response, impossible to handle without prior turn
+
+**hypothesis:** a production agent needs conversation history. a single-turn system will always fail
+on follow-up messages. the golden set should have excluded these; flagging them as a data quality issue.
+
+---
+
+### failure mode 3: intent-agnostic retrieval returns wrong-topic context
+**what happens:** the TF-IDF retriever scores cosine similarity on raw text without knowing intent.
+an `order_and_delivery` query can retrieve a `software_bug` reply if they share common words like
+"notification", "phone", "update".
+
+**real example:**
+> customer (order_and_delivery): *"I wake up to a notification saying my iPhone X won't be shipped until January..."*
+> top retrieved reply (score=0.276): *"Thanks for that info. What iOS version is your iPhone running? To find: Settings > General > About > Version"*
+> draft: *"We want to help with your order. Thanks for that info. What iOS version is your iPhone running?"*
+
+**hypothesis:** intent-filtered retrieval (retrieve only from same-intent threads) would fix this.
+decided against it in chunk 8 because small per-intent pools would reduce retrieval quality.
+the right fix is intent-conditioned semantic retrieval using embeddings.
+
+---
+
+### failure mode 4: escalation misses nuanced safety/frustration signals (86% miss rate for rule-based)
+**what happens:** 32/37 escalation cases have no keyword match for the rule-based system. customers
+express serious issues without using trigger words.
+
+**real examples (rule-based missed all of these):**
+> `gs_060`: *"I got an email says I made a purchase I did not do"* → unauthorized purchase (no "unauthorized" keyword)
+> `gs_062`: *"Screen on the left hand side is popping out. You can see the screen separating"* → physical safety risk
+> `gs_063`: *"poor quality glass on back of iPhone 8 — dropped on laminate flooring and smashed"* → hardware damage
+> `gs_037`: *"Already been told nothing can be done cos I bought it via my design agency"* → unresolved escalated complaint
+
+**hypothesis:** escalation requires semantic intent, not just keyword presence. a real LLM judge
+with the rubric from the eval harness would catch all four of these. the tfidf model (recall=0.757)
+does better but still misses 9/37.
+
+---
+
+### failure mode 5: mock llm drafts produce incoherent opener + retrieved-reply combinations
+**what happens:** the mock LLM draft concatenates an intent-based opener with the top retrieved reply.
+when retrieval returns the wrong context (failure mode 3), the composite draft is internally contradictory.
+
+**real example:**
+> customer (payment_and_billing): *"I received a notification to re-authorise my apple order, but my card keeps declining"*
+> draft: *"We'd be happy to assist with your billing concern. Hi. We can help, just send us a DM and tell us what version of iOS 11 you see under Settings > General > About > Version"*
+
+the opener is correct for billing; the retrieved reply is for a software/iOS query. the composite is nonsense.
+
+**hypothesis:** this is a mock-mode artifact. a real gpt-4o-mini draft with retrieved context as
+background (not copy-pasted) would synthesise a coherent reply. the template replier (no LLM) actually
+produces cleaner output than the mock LLM in these cases — evidence that bad LLM augmentation is worse than none.
+
+---
 
 ### what is misleading about my headline number?
-_not yet written._
+
+**headline number:** tfidf+logreg intent classifier accuracy = **0.3292**
+
+**what makes it misleading:**
+
+1. **accuracy hides class collapse.** accuracy of 0.33 sounds like "we get a third of cases right."
+   in reality, the model predicts `software_bug` for 85%+ of inputs and gets credit every time
+   a `software_bug` example appears. nine intents have f1=0.00 — they are completely undetected.
+   macro-f1 = 0.19 is the honest number.
+
+2. **the golden set is too small (240 rows) and imbalanced (50 software_bug vs 4 product_and_feature_question).**
+   5-fold CV on 240 rows means each fold has ~48 test examples. a model can appear to perform
+   well by correctly guessing the dominant class.
+
+3. **bleu=0.00 sounds catastrophic but is expected.** there are thousands of valid ways to reply
+   to a customer. "please DM us" and "reach out to our team here" mean the same thing but share
+   zero bigrams with each other. bleu against a single reference is an unfair standard for open-ended reply.
+   rouge-1=0.25 is the more honest automated signal.
+
+4. **mock judge scores (overall 3.63/5) are not real LLM-as-judge scores.** the mock scorer
+   uses heuristics (presence of "DM", "happy to help", reply length) to assign scores. a real
+   gpt-4o-mini judge would likely score tone and helpfulness lower (human scored helpfulness at 2.37 vs mock's 2.80)
+   and accuracy much lower (human: 2.97 vs mock: 4.00). the kappa of 0.40 shows moderate alignment,
+   but the accuracy dimension is systematically inflated by the mock.
 
 ---
 

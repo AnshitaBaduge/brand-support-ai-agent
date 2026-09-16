@@ -3,6 +3,7 @@ data/raw/
 *.csv
 *.json
 !golden_set/golden_set.csv
+!golden_set/human_eval.csv
 !configs/*.yaml
 !outputs/*.json
 

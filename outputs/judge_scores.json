@@ -1,0 +1,433 @@
+{
+  "mode": "mock",
+  "n": 30,
+  "dimension_averages": {
+    "tone": 2.733,
+    "helpfulness": 2.8,
+    "accuracy": 4.0,
+    "safety": 5.0
+  },
+  "overall_avg": 3.633,
+  "rows": [
+    {
+      "id": "gs_164",
+      "intent": "order_and_delivery",
+      "customer_msg": "when am I going to get the iPhone x reservation email? It's been 43 hours. I've called and chatted but no one knows anyt",
+      "draft": "We want to help with your order. We have received your DM. Let's continue from there. You can also click the link below.",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_029",
+      "intent": "app_and_store_issue",
+      "customer_msg": "The only way I would have had Pandora on this phone, is if it came preloaded from the factory, but have since deleted it",
+      "draft": "We'd be glad to help with this app issue. Do you have issues with all Bluetooth devices or just this one? Please reply i",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_007",
+      "intent": "feedback_and_complaint",
+      "customer_msg": "Awesome thanks for the quick reply",
+      "draft": "We always want to improve your experience. You're welcome. Let us know the result once you're able to test it out after ",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_190",
+      "intent": "product_and_feature_question",
+      "customer_msg": "That’s still more steps than before. You can’t tap on “Done” until after you open the picture up from the bottom left of",
+      "draft": "Great question! Hey, we can look into some options for your iPhone X. We know it's not ideal to hear unexpected sounds c",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 4,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_071",
+      "intent": "app_and_store_issue",
+      "customer_msg": "Same here, diff. is my phone is just an iphone 6. Apps like facebook does not load data, all is just white. Uninstalling",
+      "draft": "We'd be glad to help with this app issue. If you're having an issue with the battery life on your device, we'd like to h",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_063",
+      "intent": "hardware_and_accessories",
+      "customer_msg": ". poor quality glass on back of iPhone 8 - dropped on laminate flooring and smashed. Had an iPhone since iPhone 3G and i",
+      "draft": "We want to help with your hardware issue. If you'd like to discuss your available service options for your iPhone 8, we'",
+      "scores": {
+        "tone": 4,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_058",
+      "intent": "account_and_password",
+      "customer_msg": "can I ask about a rather dodgy txt I’ve had about my Apple ID about to expire",
+      "draft": "Account access is critical. We’d like to see how we can help. Can you DM us some more details about the issue you're hav",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_036",
+      "intent": "connectivity_issue",
+      "customer_msg": "Dear I can turn my own Bluetooth&wifi on/off.. and please give me back my ringer volume buttons. K thanks",
+      "draft": "We can look into this connectivity issue with you. Thanks for reaching out. We have a workaround for this here: DM us if",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 4,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_189",
+      "intent": "battery_issue",
+      "customer_msg": "I do not care about 70 new emoji ios11.1 does not fix my battery life. 🔋how bad it is since I updated ios11!🤬🤯",
+      "draft": "Battery life is important to us. See our guide for improved battery life here: Please send us a DM if we can help furthe",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 4,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_027",
+      "intent": "software_bug",
+      "customer_msg": "Hey I️ would really appreciate it if you can fix my I️ on my texts, emails and messaging. I️ am feeling like it should b",
+      "draft": "We'd like to help with this update issue. Here’s what you can do to work around the issue until it’s fixed in a future s",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_174",
+      "intent": "software_bug",
+      "customer_msg": "can you please fix this I️ problem it’s getting a little annoying and hard to look professional via email to my colleagu",
+      "draft": "We'd like to help with this update issue. Here’s what you can do to work around the issue until it’s fixed in a future s",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_237",
+      "intent": "payment_and_billing",
+      "customer_msg": "It’s probably really obvious, but can you buy an iPhone entirely with Gift Card credit?",
+      "draft": "We'd be happy to assist with your billing concern. Great Question! We have a team who can help see what options are avai",
+      "scores": {
+        "tone": 4,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_140",
+      "intent": "software_bug",
+      "customer_msg": "WORST WORST EXPERIENCE........ HELP. HELP.... HELP.... TRYING TO GET HELP BUT NPT RESOLVED YET........ I bought my macbo",
+      "draft": "We'd like to help with this update issue. Let's see if updating to iOS 11.0.3 helps:",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_023",
+      "intent": "feedback_and_complaint",
+      "customer_msg": "I️ normally don’t complain about any company on social media, but Apple should not make software mistakes like this.",
+      "draft": "We always want to improve your experience. Understood. If this is only happening when viewing posts on social media, thi",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_152",
+      "intent": "battery_issue",
+      "customer_msg": "Battery life terrible since downloading IOS 11.1 on my 6S. Even in Low Power mode, battery life dropping 1% every 2 minu",
+      "draft": "Battery life is important to us. Thanks. Under Settings>General>Background App Refresh, is Weather toggled on?",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_109",
+      "intent": "payment_and_billing",
+      "customer_msg": "upgraded via Iphone Upgrade program, had phones shipped on 9/26 but got charged for old phones on 9/22, any way to get r",
+      "draft": "We'd be happy to assist with your billing concern. We can get you pointed in the right direction. For billing issues get",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_009",
+      "intent": "data_and_privacy",
+      "customer_msg": "Yep I use it, can access photos from browser if I log into",
+      "draft": "Data loss is a priority for us. What happens when you try to access Apple Pay? Please provide as many details as you can",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_008",
+      "intent": "device_performance",
+      "customer_msg": "Hey is there any reason for suddenly losing 300+ GB from the 512 GB internal flash HDD on an MBP late 2013? On reboot I'",
+      "draft": "We'd like to get your device running smoothly. We can help. Let's get more information from you in DM. Reach out there t",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_024",
+      "intent": "app_and_store_issue",
+      "customer_msg": "even after restarting, its still doing it. i’ll try redownloading it in a moment!",
+      "draft": "We'd be glad to help with this app issue. Are you only seeing this in other people's messages or does this happen when y",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_056",
+      "intent": "app_and_store_issue",
+      "customer_msg": "It launches with the white preload screen then exits out and goes back to home screen. Tried restarting phone already",
+      "draft": "We'd be glad to help with this app issue. We'd like you to restart your iPhone, and then meet us in DM to let us know if",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_060",
+      "intent": "payment_and_billing",
+      "customer_msg": "I got an email says I made a purchase I did not do. I got a pdf",
+      "draft": "We'd be happy to assist with your billing concern. You did the right thing by reaching out to us. We're happy to help. N",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_130",
+      "intent": "account_and_password",
+      "customer_msg": "Hey i need to permanently delete my iCloud account and i can't do this. Help me please.",
+      "draft": "Account access is critical. Thanks for getting in touch! We'd love to talk to you about this more. DM us more details ab",
+      "scores": {
+        "tone": 4,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_155",
+      "intent": "order_and_delivery",
+      "customer_msg": "when does the pre order for the X start?",
+      "draft": "We want to help with your order. Thanks for reaching out! For questions about pre-orders, reach out to our Online Store ",
+      "scores": {
+        "tone": 4,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_238",
+      "intent": "connectivity_issue",
+      "customer_msg": "I keep having to retype my WiFi password like 5 times a day??? It should just be saved no? I’m confused as to why it kee",
+      "draft": "We can look into this connectivity issue with you. We'd like to help out. Does this happen when you enter text or when v",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_144",
+      "intent": "device_performance",
+      "customer_msg": "How funny that as soon as the iphone x comes out my iphone 6 starts to get really slow and the battery fucks up..... im ",
+      "draft": "We'd like to get your device running smoothly. We want to help! Which model of iOS device are you currently using? What ",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_051",
+      "intent": "connectivity_issue",
+      "customer_msg": "I bought my iPhone 8 plus on 29th Sep n am already regretting. Bluetooth n wifi connectivity is terrible. Even wid iOS 1",
+      "draft": "We can look into this connectivity issue with you. Thanks for confirming. DM us how long you've had the update installed",
+      "scores": {
+        "tone": 3,
+        "helpfulness": 4,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_184",
+      "intent": "software_bug",
+      "customer_msg": "my phone worked perfectly until iOS 11 came out. Since then I’ve had tons of problems.",
+      "draft": "We'd like to help with this update issue. Let's take a look at this together. Does it freeze on one particular app? Whic",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 3,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_167",
+      "intent": "account_and_password",
+      "customer_msg": "I accidentally associate a wrong account and now this and I can’t get my music back plz help",
+      "draft": "Account access is critical. Best way to download it all: 1) Make a new playlist & put everything in the library in that.",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_180",
+      "intent": "battery_issue",
+      "customer_msg": "BatteryGate Apple iPad Air 2 battery swelled with a full charge after upgrade to iOS 11",
+      "draft": "Battery life is important to us. Can you tell us more about the alarm issues your facing? Are they from the Clock app? D",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    },
+    {
+      "id": "gs_228",
+      "intent": "data_and_privacy",
+      "customer_msg": "I CAN'T BELIEVE THIS ALL MY MESSAGES WERE ERASED BECAUSE MY PHONE WASN'TUPDATED ENOUGH. SO I COULD HAVE THE SAME PROBLEM",
+      "draft": "Data loss is a priority for us. We'd like to help. From which device are your messages missing? Also, which software ver",
+      "scores": {
+        "tone": 2,
+        "helpfulness": 2,
+        "accuracy": 4,
+        "safety": 5,
+        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+      },
+      "mode": "mock"
+    }
+  ]
+}

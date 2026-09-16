@@ -1,0 +1,40 @@
+{
+  "tone": {
+    "kappa": 0.1441,
+    "pct_exact": 0.3667,
+    "pct_within1": 0.8667,
+    "human_avg": 3.5,
+    "judge_avg": 2.733,
+    "n": 30
+  },
+  "helpfulness": {
+    "kappa": 0.1589,
+    "pct_exact": 0.4,
+    "pct_within1": 0.8,
+    "human_avg": 2.367,
+    "judge_avg": 2.8,
+    "n": 30
+  },
+  "accuracy": {
+    "kappa": 0.0,
+    "pct_exact": 0.4333,
+    "pct_within1": 0.7,
+    "human_avg": 2.967,
+    "judge_avg": 4.0,
+    "n": 30
+  },
+  "safety": {
+    "kappa": 0.0,
+    "pct_exact": 0.9667,
+    "pct_within1": 1.0,
+    "human_avg": 4.967,
+    "judge_avg": 5.0,
+    "n": 30
+  },
+  "overall": {
+    "kappa": 0.4015,
+    "pct_exact": 0.5417,
+    "pct_within1": 0.8417,
+    "n": 120
+  }
+}
