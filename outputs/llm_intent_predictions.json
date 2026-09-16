@@ -1,0 +1,402 @@
+[
+  {
+    "id": "gs_176",
+    "customer_msg": "Same here. Read 3times - still none the wiser. Plus what is this new 3rd button state they got going on. Is my Bluetooth",
+    "true_intent": "connectivity_issue",
+    "pred_intent": "product_and_feature_question",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_048",
+    "customer_msg": "I can’t send WhatsApp messages from my locked screen on my iPhones... I guess this is one more problem of iOS11",
+    "true_intent": "software_bug",
+    "pred_intent": "hardware_and_accessories",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_112",
+    "customer_msg": "my phone is a mess since the iOS 11 updates. 🙄The “bug fixes” have fixed very little.",
+    "true_intent": "software_bug",
+    "pred_intent": "hardware_and_accessories",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_177",
+    "customer_msg": "thanks Apple because I lost everything in my IPhone due to errors in the system Thank you very much",
+    "true_intent": "data_and_privacy",
+    "pred_intent": "app_and_store_issue",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_196",
+    "customer_msg": "Hi I want to view the US app store (I'm in UK) as one of my iMessage sticker packs has been featured there. Is there a s",
+    "true_intent": "app_and_store_issue",
+    "pred_intent": "app_and_store_issue",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_189",
+    "customer_msg": "I do not care about 70 new emoji ios11.1 does not fix my battery life. 🔋how bad it is since I updated ios11!🤬🤯",
+    "true_intent": "battery_issue",
+    "pred_intent": "battery_issue",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_072",
+    "customer_msg": "whatever the latest update of iOS did it needs to be fixed Ive had to charge my phone 3x in 1 day with same usuage as us",
+    "true_intent": "battery_issue",
+    "pred_intent": "feedback_and_complaint",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_170",
+    "customer_msg": "should my ear pods case be losing over 3% battery life per hour? Pods are at 100% so they are not charging",
+    "true_intent": "battery_issue",
+    "pred_intent": "battery_issue",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_038",
+    "customer_msg": "fix this crashing shit plssssss",
+    "true_intent": "device_performance",
+    "pred_intent": "device_performance",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_232",
+    "customer_msg": "hey I have had an email from Apple asking me to verify some of my details on my account and they want me to click on thi",
+    "true_intent": "account_and_password",
+    "pred_intent": "account_and_password",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_044",
+    "customer_msg": "How do I update my shipping address for my iPhone X order?",
+    "true_intent": "order_and_delivery",
+    "pred_intent": "order_and_delivery",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_224",
+    "customer_msg": "Cheers... all that crap is off. Battery is on low mode and screen is practically at its darkest brightness. Sort it out ",
+    "true_intent": "battery_issue",
+    "pred_intent": "battery_issue",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_175",
+    "customer_msg": "so disappointed with new iPhone 8. It just won’t shut off. Every time I get a text or message it stays on. rubbish",
+    "true_intent": "software_bug",
+    "pred_intent": "feedback_and_complaint",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_227",
+    "customer_msg": "So how come random chunks of my photo library have just disappeared ?!?! This includes the first day’s worth of holiday ",
+    "true_intent": "data_and_privacy",
+    "pred_intent": "app_and_store_issue",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_065",
+    "customer_msg": "Worst customer service experience of my life. Can't believe such terrible service from Apple. Used to hold them in high ",
+    "true_intent": "feedback_and_complaint",
+    "pred_intent": "feedback_and_complaint",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_089",
+    "customer_msg": "MY PHONE JUST DELETED ALL OF MY PICTURES AND IM SO FUCKING PISSED FIX THIS FUCKING SHIT, IVE LOST 3000 THINGS",
+    "true_intent": "data_and_privacy",
+    "pred_intent": "data_and_privacy",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_144",
+    "customer_msg": "How funny that as soon as the iphone x comes out my iphone 6 starts to get really slow and the battery fucks up..... im ",
+    "true_intent": "device_performance",
+    "pred_intent": "battery_issue",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_035",
+    "customer_msg": "I deleted ALL photos from my iMac in Photos. All my other devices still have all the photos.",
+    "true_intent": "data_and_privacy",
+    "pred_intent": "data_and_privacy",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_221",
+    "customer_msg": "When I’m at home on wifi and it glitches when I’m on Pandora in the car blue tooth on cellular data ! I haven’t dropped ",
+    "true_intent": "connectivity_issue",
+    "pred_intent": "connectivity_issue",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_178",
+    "customer_msg": "after I hit the checkout button I got this Cit One message about not knowing if I'm approved. Is my phone preordered or ",
+    "true_intent": "order_and_delivery",
+    "pred_intent": "data_and_privacy",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_115",
+    "customer_msg": "wifi gets enabled automatically after upgrading to 11.0.3 on iPhone 6.",
+    "true_intent": "connectivity_issue",
+    "pred_intent": "connectivity_issue",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_092",
+    "customer_msg": "Mac user since the 90s here. Slowly but steadily over the last five years I have been seeing more and more random shit l",
+    "true_intent": "software_bug",
+    "pred_intent": "data_and_privacy",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_010",
+    "customer_msg": "when will this os11 be fixed? It’s terrible my 7plus is running poor now. disappointed",
+    "true_intent": "software_bug",
+    "pred_intent": "feedback_and_complaint",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_015",
+    "customer_msg": "I have a reservation number but want to change payment method. Will that change my delivery date?",
+    "true_intent": "order_and_delivery",
+    "pred_intent": "payment_and_billing",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_149",
+    "customer_msg": "I purchased an iPhone X with a November 3rd delivery date, when am I going to get tracking for it?",
+    "true_intent": "order_and_delivery",
+    "pred_intent": "order_and_delivery",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_077",
+    "customer_msg": "My iPhone is frozen when I wanna unlock it and there's a notification stuck at the top of my screen, I can use siri tho.",
+    "true_intent": "device_performance",
+    "pred_intent": "device_performance",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_153",
+    "customer_msg": "Thanks for IOS11 ... I can now use my phone for 30 minutes on a full charge .. 2017",
+    "true_intent": "battery_issue",
+    "pred_intent": "payment_and_billing",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_037",
+    "customer_msg": "Already been told that nothing can be done cos I bought it via my design agency even though I have a receipt Your U.K. M",
+    "true_intent": "feedback_and_complaint",
+    "pred_intent": "feedback_and_complaint",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_006",
+    "customer_msg": "Hey, will I be able to get iPhone X next week in HK? Because it's unavailable for pre-order. Going there next week.",
+    "true_intent": "order_and_delivery",
+    "pred_intent": "order_and_delivery",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_097",
+    "customer_msg": "whyyy have my messages been coming in delayed the past like 3 days 🤦🏽‍♀️",
+    "true_intent": "app_and_store_issue",
+    "pred_intent": "data_and_privacy",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_090",
+    "customer_msg": "Atall and although I'm given a option to reset my password on iMessage every time I make a new one it won't accept my ol",
+    "true_intent": "account_and_password",
+    "pred_intent": "account_and_password",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_014",
+    "customer_msg": "at 8 AM battery was 100% now it’s 12 PM and it’s already at 20% 💀🤷🏻‍♂️",
+    "true_intent": "battery_issue",
+    "pred_intent": "battery_issue",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_129",
+    "customer_msg": "New Message box never opens,,, it just goes to inbox / deck of messages and this is happening to most of known friends a",
+    "true_intent": "software_bug",
+    "pred_intent": "data_and_privacy",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_169",
+    "customer_msg": "that updated deleted all of the music I had saved on my phone. HeartBroken",
+    "true_intent": "data_and_privacy",
+    "pred_intent": "data_and_privacy",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_231",
+    "customer_msg": "Mac air is having problem of liquid spill in motherboard due to which it stops charging Is apple selling defective Macs",
+    "true_intent": "hardware_and_accessories",
+    "pred_intent": "hardware_and_accessories",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_032",
+    "customer_msg": "iOS 11.1 it’s draining my battery!",
+    "true_intent": "battery_issue",
+    "pred_intent": "battery_issue",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_004",
+    "customer_msg": "setting up a replacement iPhone and your verification put it in a different state, should I just accept it? Why include ",
+    "true_intent": "account_and_password",
+    "pred_intent": "account_and_password",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_047",
+    "customer_msg": "hi, I’m a subscriber on Apple Music but it says I’m not a member and I’ve tried to reactivate it for 4 times now but won",
+    "true_intent": "app_and_store_issue",
+    "pred_intent": "account_and_password",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_147",
+    "customer_msg": "I just lost all my contacts , pics and work data because of the new software update 😡😡 iPhoneUpdate",
+    "true_intent": "data_and_privacy",
+    "pred_intent": "data_and_privacy",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_034",
+    "customer_msg": "why does my iPhone say \"no service\"? I've tried taking my sim out, updating my phone etc. Nothings working??",
+    "true_intent": "connectivity_issue",
+    "pred_intent": "hardware_and_accessories",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_151",
+    "customer_msg": "So do I have to buy a new line from Apple store to buy iPhone x??? Just want my phone! Can’t place an order! Trying to p",
+    "true_intent": "order_and_delivery",
+    "pred_intent": "order_and_delivery",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_205",
+    "customer_msg": "Your latest update bricked my iPhone X. When I try to restore pics from iCloud, it's not working and my last hard backup",
+    "true_intent": "data_and_privacy",
+    "pred_intent": "data_and_privacy",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_163",
+    "customer_msg": ". your latest update is pants; constant screen freezing and apps crashing. I’m going to get a Nokia brick",
+    "true_intent": "software_bug",
+    "pred_intent": "device_performance",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_087",
+    "customer_msg": "I have to carry a charger around 24/7 because of how terrible my battery is, Y",
+    "true_intent": "battery_issue",
+    "pred_intent": "battery_issue",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_125",
+    "customer_msg": "For a company that touts Ease of Use and great experiences, sure makes it hard to get a Genius Bar appointment.",
+    "true_intent": "order_and_delivery",
+    "pred_intent": "order_and_delivery",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_184",
+    "customer_msg": "my phone worked perfectly until iOS 11 came out. Since then I’ve had tons of problems.",
+    "true_intent": "software_bug",
+    "pred_intent": "hardware_and_accessories",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_204",
+    "customer_msg": "Everything was enbled in Search settings, so I disabled and enabled all apps again and now it works! Search settings nee",
+    "true_intent": "software_bug",
+    "pred_intent": "data_and_privacy",
+    "correct": false,
+    "status": "mock"
+  },
+  {
+    "id": "gs_200",
+    "customer_msg": "Would love to join the iPhone Upgrade Program to purchase the iPhone X. I’d be new. Can I get pre-approved before pre-or",
+    "true_intent": "payment_and_billing",
+    "pred_intent": "payment_and_billing",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_164",
+    "customer_msg": "when am I going to get the iPhone x reservation email? It's been 43 hours. I've called and chatted but no one knows anyt",
+    "true_intent": "order_and_delivery",
+    "pred_intent": "order_and_delivery",
+    "correct": true,
+    "status": "mock"
+  },
+  {
+    "id": "gs_236",
+    "customer_msg": "Não vejo que recebi msg em nenhum app, nada. Fico o dia todo sem uma notificação sequer",
+    "true_intent": "app_and_store_issue",
+    "pred_intent": "software_bug",
+    "correct": false,
+    "status": "mock"
+  }
+]

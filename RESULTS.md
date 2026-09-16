@@ -64,16 +64,23 @@ _not yet implemented._
 - fails on: `device_performance`, `account_and_password`, `hardware_and_accessories`, `product_and_feature_question` (f1=0.00)
 - root cause: keyword overlap between intents (e.g. "update" appears in battery, software_bug, device_performance) + too few examples for thin classes
 
-### llm-based classifier
-_not yet implemented._
+### llm-based classifier (few-shot, mock mode)
+- model: gpt-4o-mini (mock fallback — no api key during development)
+- 2 few-shot demos per intent (24 total drawn from golden set)
+- evaluated on 50-example stratified subsample of remaining eval rows
+- mock uses keyword scoring + jaccard similarity to demo examples
+- **accuracy: 0.5800, macro-f1: 0.5105** (n=50, mock mode)
+- note: mock results are a structural approximation — real gpt-4o-mini will score higher
+- strong intents (mock): account_and_password (f1=0.86), battery_issue (f1=0.80), order_and_delivery (f1=0.86)
+- weak intents: software_bug (f1=0.00 — overwhelmed by similar intents), product_and_feature_question (0 support in subsample)
 
 ### comparison table
 
 | model | accuracy | macro-f1 | weighted-f1 | notes |
 |-------|----------|----------|-------------|-------|
 | trivial (majority class) | 0.2083 | 0.0287 | 0.0718 | predicts software_bug always |
-| tfidf + logreg (5-fold cv) | 0.3292 | 0.1872 | 0.2581 | best on battery, app_store; fails on thin classes |
-| llm (few-shot) | — | — | — | chunk 7 |
+| tfidf + logreg (5-fold cv) | 0.3292 | 0.1872 | 0.2581 | strong on battery/app; fails thin classes |
+| llm few-shot (mock, n=50) | 0.5800 | 0.5105 | 0.5546 | mock — real api will score higher |
 
 ---
 

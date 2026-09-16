@@ -134,4 +134,10 @@ after each meaningful action — code edit, dependency change, dataset preparati
 - `[chunk-6]` trained final model saved to outputs/tfidf_logreg.pkl; metrics to outputs/metrics_intent_baselines.json
 - `[chunk-6]` updated RESULTS.md with baseline numbers
 - `[chunk-6]` committed and pushed: "chunk 6: intent classifier baselines"
-- `[next]` chunk 7: llm-based intent classifier — few-shot prompting with openai api, eval on golden set
+- `[chunk-7]` created src/intent_llm.py — few-shot classifier with real api + mock fallback
+- `[chunk-7]` mock mode: keyword scoring + jaccard similarity to 2 demos per intent
+- `[chunk-7]` mock results (n=50): accuracy=0.5800, macro-f1=0.5105 (vs tfidf 0.33/0.19)
+- `[chunk-7]` api key not available — mock mode used; real api run to be done before submission
+- `[chunk-7]` outputs saved: outputs/llm_intent_predictions.json, outputs/metrics_intent_llm.json
+- `[chunk-7]` committed and pushed: "chunk 7: llm few-shot intent classifier with mock fallback"
+- `[next]` chunk 8: reply generation — retrieve top-k similar historical replies, draft via llm or template
