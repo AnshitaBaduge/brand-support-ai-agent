@@ -1,0 +1,102 @@
+# AGENTS.md
+
+> **this file is the authoritative handoff document for all automated agents working in this repository.**
+> every agent must read this file in full before making any change.
+
+---
+
+## project overview
+
+**repo:** [brand-support-ai-agent](https://github.com/AnshitaBaduge/brand-support-ai-agent)
+**owner:** AnshitaBaduge
+**scope:** hiver sde intern take-home assignment — build an ai support agent for a brand using the twitter customer-support dataset, with evaluation, golden-set annotation, and reproducible results.
+
+---
+
+## current scope
+
+- experimental software (intent classifier, reply drafter, escalation router)
+- reproducible data and evaluation artifacts
+- golden-set annotation (150–250 hand-labelled examples)
+- results and failure logging
+- decision logging (10–15 non-obvious decisions)
+- repository documentation (README, PLAN, PROJECT, RESULTS)
+
+---
+
+## what agents must not do
+
+- do not fabricate labels, results, human-evaluation evidence, or citations
+- do not draft submission-report content unless explicitly instructed
+- do not modify BLUEPRINT.pdf
+- do not commit secrets, api keys, or credentials
+- do not run code on the full dataset without explicit instruction (subsampling expected)
+- do not introduce large dependencies without logging a decision
+
+---
+
+## conventions
+
+### code style
+- small, to-the-point comments wherever required — all lowercase, no caps
+- no verbose docstrings unless requested
+- python preferred; notebooks for exploration only
+
+### git
+- commit messages: lowercase, concise, no caps
+- commit after each meaningful set of changes
+- branch: `main`
+
+### file structure (planned)
+```
+brand-support-ai-agent/
+├── AGENTS.md              # this file
+├── BLUEPRINT.pdf          # original assignment spec (read-only)
+├── PLAN.html              # execution plan for the project
+├── PROJECT.html           # project info, tools, dataset details
+├── README.md              # github repo readme
+├── RESULTS.md             # results and insights log
+├── data/                  # raw and processed data (gitignored if large)
+├── src/                   # source code
+│   ├── data_prep.py       # data loading and cleaning
+│   ├── intent.py          # intent classification
+│   ├── reply.py           # reply generation
+│   ├── escalation.py      # escalation logic
+│   └── evaluate.py        # evaluation harness
+├── golden_set/            # hand-labelled evaluation examples
+├── notebooks/             # exploratory notebooks
+├── configs/               # config files
+├── outputs/               # model outputs, metrics
+└── decision_log.md        # 10-15 non-obvious decisions
+```
+
+### work log update rules
+after each meaningful action — code edit, dependency change, dataset preparation, command execution, result recorded, decision made, or blocker encountered — add a dated, factual entry to the work log below. keep entries concise enough for a subsequent agent to resume safely.
+
+---
+
+## agent preferences (from user)
+
+- credits are limited — work in small, self-contained chunks
+- each chunk should produce a committable result
+- do not leave work half-done if a session might end
+- prioritize getting something working end-to-end over perfection
+- update AGENTS.md work log and RESULTS.md after each meaningful step
+
+---
+
+## work log
+
+### 2026-09-16
+- `[init]` read BLUEPRINT.pdf — extracted full assignment spec
+- `[init]` initialized git repo, added remote origin (github.com/AnshitaBaduge/brand-support-ai-agent)
+- `[docs]` created AGENTS.md, PLAN.html, PROJECT.html, README.md, RESULTS.md
+- `[docs]` initial commit with project scaffolding and documentation
+- `[chunk-1]` created full project skeleton: src/, data/, golden_set/, notebooks/, configs/, outputs/
+- `[chunk-1]` created requirements.txt, .env.example, .gitignore, decision_log.md
+- `[chunk-1]` created src/data_prep.py with sanity_check, filter_brand, build_threads
+- `[chunk-1]` created stub files: src/intent.py, src/reply.py, src/escalation.py, src/evaluate.py
+- `[chunk-1]` fixed aiohttp version (upgraded to 3.14.3) — resolves openai import error
+- `[chunk-1]` raw data not yet downloaded — kaggle credentials missing; see data_prep.py for instructions
+- `[chunk-1]` committed and pushed: "chunk 1: project skeleton, src stubs, requirements, decision log"
+- `[blocker]` dataset download pending: need kaggle api credentials or manual download of twcs.csv → data/raw/twcs.csv

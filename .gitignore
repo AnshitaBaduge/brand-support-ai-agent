@@ -1,0 +1,48 @@
+# data files (too large for git)
+data/raw/
+*.csv
+*.json
+!golden_set/golden_set.csv
+!configs/*.yaml
+
+# model weights
+*.pkl
+*.pt
+*.bin
+*.h5
+*.onnx
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# environment
+.env
+.venv/
+env/
+venv/
+
+# ide
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# os
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# jupyter
+.ipynb_checkpoints/
+
+# outputs (regenerable)
+outputs/*.png
+outputs/*.json

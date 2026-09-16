@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>execution plan — brand support ai agent</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --heading: #f0f6fc;
+      --accent: #58a6ff;
+      --green: #3fb950;
+      --yellow: #d29922;
+      --red: #f85149;
+      --purple: #bc8cff;
+      --orange: #f0883e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; padding: 2rem; max-width: 960px; margin: 0 auto;
+    }
+    h1 { color: var(--heading); font-size: 1.8rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    h2 { color: var(--accent); font-size: 1.3rem; margin-top: 2rem; margin-bottom: 0.8rem; }
+    h3 { color: var(--purple); font-size: 1.1rem; margin-top: 1.2rem; margin-bottom: 0.4rem; }
+    p, li { margin-bottom: 0.4rem; }
+    ul, ol { padding-left: 1.5rem; }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 1rem 1.2rem; margin-bottom: 1rem;
+    }
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 12px;
+      font-size: 0.75rem; font-weight: 600; margin-right: 6px;
+    }
+    .badge-chunk { background: var(--accent); color: var(--bg); }
+    .badge-time { background: var(--green); color: var(--bg); }
+    .badge-priority { background: var(--orange); color: var(--bg); }
+    .note {
+      background: #1c2128; border-left: 3px solid var(--yellow);
+      padding: 0.6rem 1rem; margin: 0.8rem 0; border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+    }
+    .warn {
+      background: #2d1b1b; border-left: 3px solid var(--red);
+      padding: 0.6rem 1rem; margin: 0.8rem 0; border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+    }
+    code {
+      background: #1c2128; padding: 2px 6px; border-radius: 4px;
+      font-size: 0.9em; color: var(--accent);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+    th, td {
+      border: 1px solid var(--border); padding: 0.5rem 0.8rem;
+      text-align: left; font-size: 0.9rem;
+    }
+    th { background: var(--card); color: var(--heading); }
+    hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+
+<h1>📋 execution plan — brand support ai agent</h1>
+<p>hiver sde intern take-home assignment<br>
+repo: <a href="https://github.com/AnshitaBaduge/brand-support-ai-agent">github.com/AnshitaBaduge/brand-support-ai-agent</a></p>
+
+<div class="note">
+  <strong>⚡ credit-aware workflow:</strong> this plan is split into small, self-contained chunks. each chunk produces a committable result so no work is lost if a session ends mid-way. pick up from wherever the last chunk left off.
+</div>
+
+<hr>
+
+<h2>🎯 what we're building (the big picture)</h2>
+<div class="card">
+  <p>an ai support agent for a single brand (from twitter customer-support data) that can:</p>
+  <ol>
+    <li><strong>classify</strong> incoming customer messages into intents (categories you define)</li>
+    <li><strong>draft a reply</strong> grounded in how the brand historically handled similar issues</li>
+    <li><strong>decide</strong> whether to auto-handle or escalate to a human (with a reason)</li>
+  </ol>
+  <p style="margin-top: 0.8rem;">then <strong>prove it works</strong> with evaluation, baselines, failure analysis, and a golden test set.</p>
+</div>
+
+<hr>
+
+<h2>📦 chunk-by-chunk execution plan</h2>
+
+<!-- CHUNK 1 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 1</span> project setup & data download</h3>
+  <span class="badge badge-time">~15 min</span>
+  <span class="badge badge-priority">start here</span>
+  <ul>
+    <li>initialize repo structure (folders: <code>src/</code>, <code>data/</code>, <code>golden_set/</code>, <code>notebooks/</code>, <code>configs/</code>, <code>outputs/</code>)</li>
+    <li>create <code>.gitignore</code> (ignore data files, model weights, api keys, pycache)</li>
+    <li>create <code>requirements.txt</code> with initial dependencies</li>
+    <li>download the twitter customer-support dataset from kaggle</li>
+    <li>do a quick sanity check — row count, columns, sample rows</li>
+    <li>commit: <code>add project skeleton and raw data</code></li>
+  </ul>
+  <div class="note">
+    <strong>what you need:</strong> kaggle account (or download manually), python 3.10+, pip
+  </div>
+</div>
+
+<!-- CHUNK 2 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 2</span> data exploration & brand selection</h3>
+  <span class="badge badge-time">~20 min</span>
+  <ul>
+    <li>load the dataset, understand schema (tweet_id, author_id, inbound, text, etc.)</li>
+    <li>count tweets per brand — pick one with enough volume (500+ threads recommended)</li>
+    <li>reconstruct conversation threads (inbound tweet → brand reply chains)</li>
+    <li>document brand choice and reasoning in <code>decision_log.md</code></li>
+    <li>save filtered brand data as <code>data/brand_conversations.csv</code></li>
+    <li>commit: <code>filter dataset for chosen brand</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 3 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 3</span> data cleaning & thread reconstruction</h3>
+  <span class="badge badge-time">~20 min</span>
+  <ul>
+    <li>clean text: remove urls, @mentions noise, normalize whitespace</li>
+    <li>reconstruct multi-turn threads (link reply chains using response_tweet_id)</li>
+    <li>create structured format: <code>[customer_msg, brand_reply, ...]</code> per thread</li>
+    <li>handle edge cases: missing replies, broken chains, duplicate tweets</li>
+    <li>save cleaned data as <code>data/clean_threads.json</code></li>
+    <li>commit: <code>clean data and reconstruct threads</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 4 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 4</span> intent discovery & definition</h3>
+  <span class="badge badge-time">~25 min</span>
+  <ul>
+    <li>sample ~200 customer messages, read them manually</li>
+    <li>cluster by topic — identify 8-15 natural intent categories</li>
+    <li>write intent definitions with examples in <code>configs/intents.yaml</code></li>
+    <li>optionally: use an llm to help cluster, but verify manually</li>
+    <li>log intent taxonomy decisions in <code>decision_log.md</code></li>
+    <li>commit: <code>define intent taxonomy</code></li>
+  </ul>
+  <div class="note">
+    <strong>tip:</strong> keep intents actionable — "billing_issue", "order_status", "technical_problem" rather than vague categories. fewer is better than too many.
+  </div>
+</div>
+
+<!-- CHUNK 5 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 5</span> golden set creation (part 1)</h3>
+  <span class="badge badge-time">~30 min</span>
+  <ul>
+    <li>sample 150-250 customer messages (stratified by intent if possible)</li>
+    <li>for each: label intent, expected reply quality markers, escalation decision</li>
+    <li>save as <code>golden_set/golden_set.csv</code> with columns: <code>id, text, intent, should_escalate, escalation_reason, notes</code></li>
+    <li>write annotation guidelines in <code>golden_set/annotation_notes.md</code></li>
+    <li>commit: <code>add golden evaluation set (part 1)</code></li>
+  </ul>
+  <div class="warn">
+    <strong>important:</strong> these must be genuinely hand-labelled by you. do not auto-generate labels. the assignment explicitly tests this.
+  </div>
+</div>
+
+<!-- CHUNK 6 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 6</span> intent classifier — baseline</h3>
+  <span class="badge badge-time">~25 min</span>
+  <ul>
+    <li>implement trivial baseline: random or most-frequent-class classifier</li>
+    <li>implement simple baseline: keyword/regex matcher or tfidf + logistic regression</li>
+    <li>evaluate both on golden set — accuracy, f1, confusion matrix</li>
+    <li>log results in <code>RESULTS.md</code></li>
+    <li>commit: <code>add intent classifier baselines</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 7 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 7</span> intent classifier — llm-based</h3>
+  <span class="badge badge-time">~25 min</span>
+  <ul>
+    <li>implement llm-based intent classifier (few-shot prompting with intent definitions)</li>
+    <li>evaluate on golden set — compare against baselines</li>
+    <li>try prompt variations, log what works</li>
+    <li>update <code>RESULTS.md</code> with comparison table</li>
+    <li>commit: <code>add llm intent classifier</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 8 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 8</span> reply generation</h3>
+  <span class="badge badge-time">~30 min</span>
+  <ul>
+    <li>implement reply generation using llm with brand's historical replies as context</li>
+    <li>retrieval: find similar past threads using embedding similarity or keyword search</li>
+    <li>prompt: "given this customer message and how the brand handled similar issues, draft a reply"</li>
+    <li>generate replies for golden set examples</li>
+    <li>commit: <code>add reply generation pipeline</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 9 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 9</span> escalation logic</h3>
+  <span class="badge badge-time">~20 min</span>
+  <ul>
+    <li>define escalation criteria (e.g., high-emotion, account-specific, legal, multi-issue)</li>
+    <li>implement escalation router — rule-based + llm confidence check</li>
+    <li>evaluate on golden set (precision/recall on escalation decisions)</li>
+    <li>log escalation criteria decisions in <code>decision_log.md</code></li>
+    <li>commit: <code>add escalation router</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 10 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 10</span> evaluation harness — automated metrics</h3>
+  <span class="badge badge-time">~25 min</span>
+  <ul>
+    <li>implement <code>src/evaluate.py</code> — run all components end-to-end on golden set</li>
+    <li>metrics: intent accuracy/f1, reply bleu/rouge, escalation precision/recall</li>
+    <li>output a structured results json and summary table</li>
+    <li>commit: <code>add evaluation harness</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 11 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 11</span> evaluation harness — llm-as-judge</h3>
+  <span class="badge badge-time">~25 min</span>
+  <ul>
+    <li>implement llm-as-judge rubric for reply quality (tone, accuracy, helpfulness, safety)</li>
+    <li>run judge on golden set replies</li>
+    <li>manually score ~30 replies yourself, compute judge-vs-human agreement (cohen's kappa)</li>
+    <li>log agreement evidence in <code>RESULTS.md</code></li>
+    <li>commit: <code>add llm-as-judge evaluation</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 12 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 12</span> failure analysis</h3>
+  <span class="badge badge-time">~20 min</span>
+  <ul>
+    <li>review all errors/failures from evaluation</li>
+    <li>identify top 5 failure modes with real examples</li>
+    <li>write hypotheses for each failure</li>
+    <li>write "what is misleading about my headline number?" section</li>
+    <li>update <code>RESULTS.md</code></li>
+    <li>commit: <code>add failure analysis</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 13 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 13</span> decision log & report</h3>
+  <span class="badge badge-time">~20 min</span>
+  <ul>
+    <li>compile <code>decision_log.md</code> — 10-15 non-obvious decisions with reasoning</li>
+    <li>write report sections in README: problem framing, results vs baselines, failure analysis, what's next</li>
+    <li>ensure README lets reviewers reproduce headline results in under 15 minutes</li>
+    <li>commit: <code>finalize report and decision log</code></li>
+  </ul>
+</div>
+
+<!-- CHUNK 14 -->
+<div class="card">
+  <h3><span class="badge badge-chunk">chunk 14</span> final polish & submission</h3>
+  <span class="badge badge-time">~15 min</span>
+  <ul>
+    <li>test full pipeline from scratch (clone → install → run → results)</li>
+    <li>clean up code, remove dead code, check all files are committed</li>
+    <li>update all documentation files (AGENTS.md, RESULTS.md, README.md)</li>
+    <li>submit via the notion form</li>
+    <li>commit: <code>final cleanup for submission</code></li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>⏱️ estimated total time</h2>
+<table>
+  <tr><th>phase</th><th>chunks</th><th>est. time</th></tr>
+  <tr><td>setup & data</td><td>1-3</td><td>~55 min</td></tr>
+  <tr><td>intent work</td><td>4-7</td><td>~1 hr 45 min</td></tr>
+  <tr><td>reply & escalation</td><td>8-9</td><td>~50 min</td></tr>
+  <tr><td>evaluation</td><td>10-12</td><td>~1 hr 10 min</td></tr>
+  <tr><td>docs & submission</td><td>13-14</td><td>~35 min</td></tr>
+  <tr><td><strong>total</strong></td><td>14</td><td><strong>~5 hrs</strong></td></tr>
+</table>
+
+<hr>
+
+<h2>🔑 key reminders</h2>
+<div class="card">
+  <ul>
+    <li><strong>proof > system</strong> — the assignment says "the proof is worth more than the system"</li>
+    <li><strong>subsample</strong> — they won't run on full dataset, subsampling is expected and encouraged</li>
+    <li><strong>golden set must be hand-labelled</strong> — 150-250 examples, with annotation notes</li>
+    <li><strong>two baselines minimum</strong> — one trivial, one simple</li>
+    <li><strong>failure analysis is mandatory</strong> — top 5 failure modes + "what's misleading about my headline number"</li>
+    <li><strong>15-minute reproducibility</strong> — README must let them reproduce results quickly</li>
+    <li><strong>cite everything</strong> — borrowing is fine, not knowing what you borrowed is not</li>
+  </ul>
+</div>
+
+</body>
+</html>

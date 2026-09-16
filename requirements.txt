@@ -1,0 +1,21 @@
+# core data
+pandas>=2.0.0
+numpy>=1.24.0
+
+# ml / nlp
+scikit-learn>=1.3.0
+sentence-transformers>=2.2.0
+nltk>=3.8.0
+rouge-score>=0.1.2
+
+# llm api (pick one based on decision_log.md)
+openai>=1.0.0
+# google-generativeai>=0.3.0  # uncomment if using gemini
+
+# evaluation
+scipy>=1.10.0
+
+# utilities
+python-dotenv>=1.0.0
+tqdm>=4.65.0
+pyyaml>=6.0.0

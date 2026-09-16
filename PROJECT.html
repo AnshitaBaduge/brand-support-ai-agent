@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>project info — brand support ai agent</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --heading: #f0f6fc;
+      --accent: #58a6ff;
+      --green: #3fb950;
+      --yellow: #d29922;
+      --purple: #bc8cff;
+      --orange: #f0883e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; padding: 2rem; max-width: 960px; margin: 0 auto;
+    }
+    h1 { color: var(--heading); font-size: 1.8rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    h2 { color: var(--accent); font-size: 1.3rem; margin-top: 2rem; margin-bottom: 0.8rem; }
+    h3 { color: var(--purple); font-size: 1.05rem; margin-top: 1rem; margin-bottom: 0.4rem; }
+    p, li { margin-bottom: 0.4rem; }
+    ul, ol { padding-left: 1.5rem; }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 1rem 1.2rem; margin-bottom: 1rem;
+    }
+    .tag {
+      display: inline-block; padding: 2px 8px; border-radius: 12px;
+      font-size: 0.75rem; font-weight: 600; margin-right: 4px; margin-bottom: 4px;
+    }
+    .tag-lang { background: var(--accent); color: var(--bg); }
+    .tag-lib { background: var(--green); color: var(--bg); }
+    .tag-data { background: var(--orange); color: var(--bg); }
+    .tag-eval { background: var(--purple); color: var(--bg); }
+    .note {
+      background: #1c2128; border-left: 3px solid var(--yellow);
+      padding: 0.6rem 1rem; margin: 0.8rem 0; border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+    }
+    code {
+      background: #1c2128; padding: 2px 6px; border-radius: 4px;
+      font-size: 0.9em; color: var(--accent);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+    th, td {
+      border: 1px solid var(--border); padding: 0.5rem 0.8rem;
+      text-align: left; font-size: 0.9rem;
+    }
+    th { background: var(--card); color: var(--heading); }
+    hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+
+<h1>🔧 project info — brand support ai agent</h1>
+<p>hiver sde intern take-home assignment</p>
+
+<hr>
+
+<h2>📌 what this project is</h2>
+<div class="card">
+  <p>an ai-powered customer support agent for a single brand, built using real twitter support conversations. the system classifies customer intents, drafts replies grounded in historical brand behavior, and decides whether to auto-respond or escalate to a human.</p>
+  <p>the emphasis is on <strong>proving the system works</strong> — evaluation, baselines, failure analysis, and reproducibility matter more than a fancy model.</p>
+</div>
+
+<hr>
+
+<h2>📊 datasets</h2>
+
+<div class="card">
+  <h3>primary: customer support on twitter</h3>
+  <span class="tag tag-data">primary</span>
+  <span class="tag tag-data">~3M tweets</span>
+  <ul>
+    <li><strong>source:</strong> <a href="https://www.kaggle.com/datasets/thoughtvector/customer-support-on-twitter">kaggle — thoughtvector/customer-support-on-twitter</a></li>
+    <li><strong>format:</strong> csv</li>
+    <li><strong>size:</strong> ~3 million tweets</li>
+    <li><strong>content:</strong> real customer-brand conversations on twitter across dozens of brands</li>
+    <li><strong>key columns:</strong></li>
+  </ul>
+  <table>
+    <tr><th>column</th><th>description</th></tr>
+    <tr><td><code>tweet_id</code></td><td>unique tweet identifier</td></tr>
+    <tr><td><code>author_id</code></td><td>twitter user who wrote the tweet</td></tr>
+    <tr><td><code>inbound</code></td><td>true if customer message, false if brand reply</td></tr>
+    <tr><td><code>created_at</code></td><td>timestamp of the tweet</td></tr>
+    <tr><td><code>text</code></td><td>the tweet content</td></tr>
+    <tr><td><code>response_tweet_id</code></td><td>id of the tweet this is replying to (for threading)</td></tr>
+    <tr><td><code>in_response_to_tweet_id</code></td><td>id of the original tweet being responded to</td></tr>
+  </table>
+  <div class="note">
+    <strong>note:</strong> data is real and noisy — expect missing fields, broken thread chains, duplicate tweets, and non-english content. cleaning is a significant part of the work.
+  </div>
+</div>
+
+<div class="card">
+  <h3>optional secondary: banking77</h3>
+  <span class="tag tag-data">optional</span>
+  <span class="tag tag-data">intent only</span>
+  <ul>
+    <li><strong>source:</strong> <a href="https://huggingface.co/datasets/PolyAI/banking77">hugging face — PolyAI/banking77</a></li>
+    <li><strong>format:</strong> hugging face dataset</li>
+    <li><strong>size:</strong> ~13,000 queries</li>
+    <li><strong>content:</strong> 77 labelled banking intents</li>
+    <li><strong>use case:</strong> can be used to supplement intent classification work, test intent models, or as a reference for intent taxonomy design</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>🛠️ tools & technologies</h2>
+
+<div class="card">
+  <h3>language & runtime</h3>
+  <span class="tag tag-lang">python 3.10+</span>
+  <ul>
+    <li>python is the primary language</li>
+    <li>notebooks for exploration only — production code in <code>.py</code> files</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>data processing</h3>
+  <span class="tag tag-lib">pandas</span>
+  <span class="tag tag-lib">numpy</span>
+  <ul>
+    <li><strong>pandas:</strong> data loading, filtering, cleaning, csv i/o</li>
+    <li><strong>numpy:</strong> numerical operations, array handling</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>machine learning / nlp</h3>
+  <span class="tag tag-lib">scikit-learn</span>
+  <span class="tag tag-lib">sentence-transformers</span>
+  <ul>
+    <li><strong>scikit-learn:</strong> tfidf vectorizer, logistic regression (simple baseline), metrics (f1, confusion matrix)</li>
+    <li><strong>sentence-transformers:</strong> text embeddings for semantic similarity (reply retrieval)</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>llm integration</h3>
+  <span class="tag tag-lib">openai / any llm api</span>
+  <ul>
+    <li>any llm api or open model is allowed</li>
+    <li>used for: intent classification (few-shot), reply generation, llm-as-judge evaluation</li>
+    <li>candidates: openai gpt-4o-mini, google gemini, anthropic claude, local models via ollama</li>
+  </ul>
+  <div class="note">
+    <strong>decision needed:</strong> which llm to use will be decided during implementation based on cost, availability, and quality. will be logged in decision_log.md.
+  </div>
+</div>
+
+<div class="card">
+  <h3>evaluation</h3>
+  <span class="tag tag-eval">bleu</span>
+  <span class="tag tag-eval">rouge</span>
+  <span class="tag tag-eval">f1</span>
+  <span class="tag tag-eval">cohen's kappa</span>
+  <ul>
+    <li><strong>intent:</strong> accuracy, macro-f1, confusion matrix</li>
+    <li><strong>reply quality:</strong> bleu, rouge (automated); llm-as-judge (tone, accuracy, helpfulness)</li>
+    <li><strong>escalation:</strong> precision, recall, f1 on escalation decisions</li>
+    <li><strong>judge agreement:</strong> cohen's kappa between llm-judge and human scores</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>dev tools</h3>
+  <span class="tag tag-lib">git</span>
+  <span class="tag tag-lib">github</span>
+  <span class="tag tag-lib">pip</span>
+  <ul>
+    <li><strong>git/github:</strong> version control and submission</li>
+    <li><strong>pip:</strong> dependency management via <code>requirements.txt</code></li>
+    <li><strong>ai coding assistants:</strong> allowed (must be able to explain and modify code live)</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📁 repository structure</h2>
+<div class="card">
+<pre style="color: var(--text); font-size: 0.85rem; line-height: 1.5;">
+brand-support-ai-agent/
+├── AGENTS.md              — agent handoff document
+├── BLUEPRINT.pdf          — original assignment (read-only)
+├── PLAN.html              — this execution plan
+├── PROJECT.html           — project info (this file)
+├── README.md              — github readme with report
+├── RESULTS.md             — results and insights log
+├── decision_log.md        — 10-15 non-obvious decisions
+├── requirements.txt       — python dependencies
+├── .gitignore             — files to exclude from git
+│
+├── src/                   — source code
+│   ├── data_prep.py       — data loading and cleaning
+│   ├── intent.py          — intent classification
+│   ├── reply.py           — reply generation
+│   ├── escalation.py      — escalation routing
+│   └── evaluate.py        — evaluation harness
+│
+├── data/                  — raw and processed datasets
+│   ├── raw/               — original kaggle csv
+│   ├── brand_conversations.csv
+│   └── clean_threads.json
+│
+├── golden_set/            — hand-labelled evaluation set
+│   ├── golden_set.csv     — 150-250 labelled examples
+│   └── annotation_notes.md
+│
+├── configs/               — configuration files
+│   └── intents.yaml       — intent taxonomy definitions
+│
+├── notebooks/             — exploration notebooks
+│
+└── outputs/               — model outputs, metrics, plots
+    ├── metrics.json
+    └── confusion_matrix.png
+</pre>
+</div>
+
+<hr>
+
+<h2>📋 deliverables checklist</h2>
+<div class="card">
+  <table>
+    <tr><th>#</th><th>deliverable</th><th>status</th></tr>
+    <tr><td>1</td><td>runnable pipeline (reproduce in &lt;15 min)</td><td>⬜ not started</td></tr>
+    <tr><td>2</td><td>golden evaluation set (150-250 hand-labelled)</td><td>⬜ not started</td></tr>
+    <tr><td>3</td><td>evaluation harness (automated + llm-as-judge)</td><td>⬜ not started</td></tr>
+    <tr><td>4</td><td>report (≤6 pages / readme section)</td><td>⬜ not started</td></tr>
+    <tr><td>5</td><td>decision log (10-15 decisions)</td><td>⬜ not started</td></tr>
+  </table>
+</div>
+
+<hr>
+
+<h2>🔗 useful links</h2>
+<div class="card">
+  <ul>
+    <li><a href="https://github.com/AnshitaBaduge/brand-support-ai-agent">github repo</a></li>
+    <li><a href="https://www.kaggle.com/datasets/thoughtvector/customer-support-on-twitter">kaggle dataset — customer support on twitter</a></li>
+    <li><a href="https://huggingface.co/datasets/PolyAI/banking77">hugging face — banking77</a></li>
+    <li><a href="https://intelligent-bar-256.notion.site/39492cbf0da2800682cfc78a600a745f">submission form (notion)</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
