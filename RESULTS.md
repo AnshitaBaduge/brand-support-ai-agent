@@ -5,6 +5,31 @@
 
 ---
 
+## dataset summary (chunk 2 & 3)
+
+| stat | value |
+|------|-------|
+| brand selected | AppleSupport |
+| raw dataset size | 2,811,774 rows |
+| brand replies in dataset | 106,860 |
+| raw threads built | 106,648 |
+| threads after cleaning | **104,183** |
+| dropped (too short post-clean) | 2,465 (2.3%) |
+| dm-redirect replies flagged | 12,063 (11.6%) |
+| avg cleaned customer msg len | ~109 chars |
+| avg cleaned brand reply len | ~137 chars |
+
+### cleaning operations applied
+- html entity decode (`&amp;` → `&`, `&gt;` → `>`, etc.)
+- url strip (`https://t.co/...` removed)
+- @mention strip (`@AppleSupport`, `@115854`, etc.)
+- hashtag symbol strip (kept word)
+- whitespace normalisation
+- empty/near-empty thread drop (<8 chars after cleaning)
+- dm-redirect flag (brand replies that only say "send us a dm" — kept but flagged)
+
+---
+
 ## status
 
 | component | status | last updated |

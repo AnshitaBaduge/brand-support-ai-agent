@@ -107,4 +107,11 @@ after each meaningful action — code edit, dependency change, dataset preparati
 - `[chunk-2]` updated decision_log.md #1 with brand selection rationale
 - `[chunk-2]` created src/chunk2_explore.py (reusable brand filter + thread builder)
 - `[chunk-2]` committed and pushed: "chunk 2: brand selection (applesupport), filter data, build threads"
-- `[next]` chunk 3: data cleaning — strip urls, @mentions, normalize whitespace, handle edge cases
+- `[chunk-3]` inspected raw threads — found: @mentions (99.9%), urls (14.8%), html entities (5.5%), near-empty (<10 chars): 1
+- `[chunk-3]` implemented clean_text() in src/data_prep.py: html decode, url strip, @mention strip, hashtag norm, whitespace collapse
+- `[chunk-3]` added is_valid_thread() and is_dm_redirect() filters
+- `[chunk-3]` cleaning result: 106,648 → 104,183 kept, 2,465 dropped, 12,063 dm-redirect flagged (11.6%)
+- `[chunk-3]` output saved to data/cleaned_threads.json (72 MB) with raw + cleaned fields preserved
+- `[chunk-3]` updated RESULTS.md with cleaning stats
+- `[chunk-3]` committed and pushed: "chunk 3: data cleaning pipeline"
+- `[next]` chunk 4: intent discovery — sample ~200 msgs, cluster manually, define 8-12 intents in configs/intents.yaml
