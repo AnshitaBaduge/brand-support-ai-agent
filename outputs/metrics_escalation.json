@@ -1,0 +1,18 @@
+{
+  "rule_based": {
+    "model": "rule-based (keyword patterns)",
+    "accuracy": 0.8667,
+    "precision_escalate": 0.8571,
+    "recall_escalate": 0.1622,
+    "f1_escalate": 0.2727,
+    "roc_auc": 0.5786
+  },
+  "tfidf_logreg": {
+    "model": "tfidf + logreg (threshold=0.391)",
+    "accuracy": 0.6583,
+    "precision_escalate": 0.2772,
+    "recall_escalate": 0.7568,
+    "f1_escalate": 0.4058,
+    "roc_auc": 0.7225
+  }
+}

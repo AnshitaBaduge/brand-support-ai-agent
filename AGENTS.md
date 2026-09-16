@@ -148,3 +148,11 @@ after each meaningful action — code edit, dependency change, dataset preparati
 - `[chunk-8]` top-1 cosine scores: 0.15–0.45 after self-match exclusion (genuine neighbors)
 - `[chunk-8]` committed and pushed: "chunk 8: reply generation pipeline — tfidf retriever + template + llm replier"
 - `[next]` chunk 9: escalation router — rule-based + llm classifier using golden set escalation labels
+- `[chunk-9]` implemented src/escalation.py — RuleBasedEscalator (27 patterns) + TfidfEscalator (balanced logreg)
+- `[chunk-9]` rule-based: precision=0.857, recall=0.162, f1=0.273 — very precise but misses 31/37 cases
+- `[chunk-9]` tfidf+logreg (threshold=0.391): precision=0.277, recall=0.757, f1=0.406, auc=0.723
+- `[chunk-9]` threshold tuning: default 0.5 gave 0.00 recall; tuned to 0.391 via precision-recall curve
+- `[chunk-9]` key finding: most escalations need context understanding, not keyword matching
+- `[chunk-9]` trained final model saved to outputs/escalation_model.pkl
+- `[chunk-9]` committed and pushed: "chunk 9: escalation router — rule-based + tfidf logreg with threshold tuning"
+- `[next]` chunk 10: eval harness — bleu/rouge on reply outputs + llm-as-judge rubric

@@ -124,11 +124,18 @@ _not yet computed._
 
 ## escalation routing
 
-| metric | value | notes |
-|--------|-------|-------|
-| precision | — | — |
-| recall | — | — |
-| f1 | — | — |
+- **class balance:** 37 escalate / 203 auto-handle (15.4% escalation rate)
+- **key metric:** recall on escalate class — missing a safety/fraud case is worse than a false alarm
+
+| model | precision | recall | f1 | roc-auc | notes |
+|-------|-----------|--------|----|---------|-------|
+| rule-based (27 keyword patterns) | 0.857 | 0.162 | 0.273 | 0.579 | very precise, misses 31/37 escalations |
+| tfidf + logreg (threshold=0.391) | 0.277 | 0.757 | 0.406 | 0.723 | catches 28/37 escalations, noisy |
+
+**key insight:** rule-based catches only the obvious cases (smoking charger, fraud keyword). 
+Most escalations are nuanced — "screen popping out", "genius bar left my phone a brick",
+"lost 3000 photos" — which the tfidf model learns from context.
+the tfidf model with a lowered threshold is strictly better for safety-critical routing.
 
 ---
 
