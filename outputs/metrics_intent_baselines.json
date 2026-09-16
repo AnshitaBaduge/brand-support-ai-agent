@@ -1,0 +1,188 @@
+{
+  "trivial": {
+    "model": "trivial (majority class)",
+    "accuracy": 0.2083,
+    "macro_f1": 0.0287,
+    "weighted_f1": 0.0718,
+    "per_class": {
+      "software_bug": {
+        "precision": 0.20833333333333334,
+        "recall": 1.0,
+        "f1-score": 0.3448275862068966,
+        "support": 50.0
+      },
+      "device_performance": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 14.0
+      },
+      "battery_issue": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 26.0
+      },
+      "connectivity_issue": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 21.0
+      },
+      "account_and_password": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 16.0
+      },
+      "payment_and_billing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 14.0
+      },
+      "hardware_and_accessories": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 17.0
+      },
+      "app_and_store_issue": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 27.0
+      },
+      "product_and_feature_question": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "order_and_delivery": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 18.0
+      },
+      "feedback_and_complaint": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 16.0
+      },
+      "data_and_privacy": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 17.0
+      },
+      "accuracy": 0.20833333333333334,
+      "macro avg": {
+        "precision": 0.017361111111111112,
+        "recall": 0.08333333333333333,
+        "f1-score": 0.02873563218390805,
+        "support": 240.0
+      },
+      "weighted avg": {
+        "precision": 0.04340277777777778,
+        "recall": 0.20833333333333334,
+        "f1-score": 0.07183908045977012,
+        "support": 240.0
+      }
+    }
+  },
+  "tfidf_logreg": {
+    "model": "tfidf + logreg (5-fold cv)",
+    "accuracy": 0.3292,
+    "macro_f1": 0.1872,
+    "weighted_f1": 0.2581,
+    "per_class": {
+      "software_bug": {
+        "precision": 0.24154589371980675,
+        "recall": 1.0,
+        "f1-score": 0.38910505836575876,
+        "support": 50.0
+      },
+      "device_performance": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 14.0
+      },
+      "battery_issue": {
+        "precision": 0.9285714285714286,
+        "recall": 0.5,
+        "f1-score": 0.65,
+        "support": 26.0
+      },
+      "connectivity_issue": {
+        "precision": 0.8,
+        "recall": 0.19047619047619047,
+        "f1-score": 0.3076923076923077,
+        "support": 21.0
+      },
+      "account_and_password": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 16.0
+      },
+      "payment_and_billing": {
+        "precision": 1.0,
+        "recall": 0.07142857142857142,
+        "f1-score": 0.13333333333333333,
+        "support": 14.0
+      },
+      "hardware_and_accessories": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 17.0
+      },
+      "app_and_store_issue": {
+        "precision": 0.8888888888888888,
+        "recall": 0.2962962962962963,
+        "f1-score": 0.4444444444444444,
+        "support": 27.0
+      },
+      "product_and_feature_question": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4.0
+      },
+      "order_and_delivery": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 18.0
+      },
+      "feedback_and_complaint": {
+        "precision": 0.6666666666666666,
+        "recall": 0.125,
+        "f1-score": 0.21052631578947367,
+        "support": 16.0
+      },
+      "data_and_privacy": {
+        "precision": 1.0,
+        "recall": 0.058823529411764705,
+        "f1-score": 0.1111111111111111,
+        "support": 17.0
+      },
+      "accuracy": 0.32916666666666666,
+      "macro avg": {
+        "precision": 0.4604727398205659,
+        "recall": 0.18683538230106855,
+        "f1-score": 0.18718438089470243,
+        "support": 240.0
+      },
+      "weighted avg": {
+        "precision": 0.4945284103979756,
+        "recall": 0.32916666666666666,
+        "f1-score": 0.2580865332833897,
+        "support": 240.0
+      }
+    }
+  }
+}

@@ -52,16 +52,28 @@ _not yet implemented._
 ### simple baseline
 _not yet implemented._
 
+### trivial baseline (majority class)
+- always predicts `software_bug` (most common class, 50/240)
+- accuracy: **0.2083**, macro-f1: **0.0287**
+
+### simple baseline (tfidf + logistic regression)
+- tfidf unigrams+bigrams (15k features, sublinear tf) + multinomial logistic regression
+- evaluated with 5-fold stratified cross-validation on golden set (n=240)
+- accuracy: **0.3292**, macro-f1: **0.1872**
+- strong on `battery_issue` (f1=0.65), `app_and_store_issue` (f1=0.44)
+- fails on: `device_performance`, `account_and_password`, `hardware_and_accessories`, `product_and_feature_question` (f1=0.00)
+- root cause: keyword overlap between intents (e.g. "update" appears in battery, software_bug, device_performance) + too few examples for thin classes
+
 ### llm-based classifier
 _not yet implemented._
 
 ### comparison table
 
-| model | accuracy | macro-f1 | notes |
-|-------|----------|----------|-------|
-| trivial (random/majority) | — | — | — |
-| simple (tfidf + logreg) | — | — | — |
-| llm (few-shot) | — | — | — |
+| model | accuracy | macro-f1 | weighted-f1 | notes |
+|-------|----------|----------|-------------|-------|
+| trivial (majority class) | 0.2083 | 0.0287 | 0.0718 | predicts software_bug always |
+| tfidf + logreg (5-fold cv) | 0.3292 | 0.1872 | 0.2581 | best on battery, app_store; fails on thin classes |
+| llm (few-shot) | — | — | — | chunk 7 |
 
 ---
 
@@ -126,6 +138,10 @@ _not yet written._
 | date | insight |
 |------|---------|
 | 2026-09-16 | project initialized — blueprint extracted, documentation scaffolded |
+| 2026-09-16 | brand selected: AppleSupport — best thread completeness (99.8%) among top 5 brands |
+| 2026-09-16 | cleaning dropped 2.3% of threads (too short after stripping mentions/urls) |
+| 2026-09-16 | 11.6% of brand replies are dm-redirects — flagged but kept for analysis |
+| 2026-09-16 | 12 intent clusters identified from 300 manually reviewed messages |
 
 ---
 
@@ -133,10 +149,15 @@ _not yet written._
 
 | stat | value |
 |------|-------|
-| total examples | — |
-| intents covered | — |
-| escalation cases | — |
-| annotation method | — |
+| total examples | 240 |
+| intents covered | 12 / 12 |
+| examples per intent | 4–50 (skewed — software_bug dominant) |
+| escalation yes | 37 / 240 (15.4%) |
+| escalation no | 203 / 240 (84.6%) |
+| intent labels changed from suggestion | 85 / 240 (35%) — strong manual review signal |
+| annotation method | keyword-bucketed stratified sampling → full manual review |
+| annotation status | **done** |
+| thinnest intent | product_and_feature_question (4 examples) — noted in decision log |
 
 ---
 

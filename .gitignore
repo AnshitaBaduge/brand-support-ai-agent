@@ -4,6 +4,7 @@ data/raw/
 *.json
 !golden_set/golden_set.csv
 !configs/*.yaml
+!outputs/*.json
 
 # model weights
 *.pkl
@@ -43,6 +44,6 @@ desktop.ini
 # jupyter
 .ipynb_checkpoints/
 
-# outputs (regenerable)
+# outputs (regenerable binaries excluded, metrics kept)
+outputs/*.pkl
 outputs/*.png
-outputs/*.json

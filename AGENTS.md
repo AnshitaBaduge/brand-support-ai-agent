@@ -120,4 +120,18 @@ after each meaningful action — code edit, dependency change, dataset preparati
 - `[chunk-4]` intents: software_bug, device_performance, battery_issue, connectivity_issue, account_and_password, payment_and_billing, hardware_and_accessories, app_and_store_issue, product_and_feature_question, order_and_delivery, feedback_and_complaint, data_and_privacy
 - `[chunk-4]` updated decision_log.md #3 with taxonomy rationale
 - `[chunk-4]` committed and pushed: "chunk 4: intent taxonomy — 12 intents defined in configs/intents.yaml"
-- `[next]` chunk 5: golden set creation — hand-label 150-250 examples with intent + escalation decision
+- `[chunk-5]` created src/build_golden_set.py — stratified sampler (20 per intent × 12 intents = 240 rows)
+- `[chunk-5]` generated golden_set/golden_set.csv with keyword-suggested intents + escalation heuristics pre-filled
+- `[chunk-5]` created golden_set/annotation_notes.md — annotation guide with escalation criteria and tips
+- `[chunk-5]` committed and pushed: "chunk 5: golden set scaffold — 240 rows ready for manual annotation"
+- `[chunk-5]` annotation complete — 37/240 escalations, 85/240 intent corrections, 0 invalid labels
+- `[chunk-5]` thinnest intent: product_and_feature_question (4 examples post-correction) — noted
+- `[chunk-6]` implemented src/intent.py — TrivialClassifier + TfidfLogregClassifier with 5-fold CV
+- `[chunk-6]` trivial baseline: accuracy=0.2083, macro-f1=0.0287 (majority class = software_bug)
+- `[chunk-6]` tfidf+logreg baseline: accuracy=0.3292, macro-f1=0.1872 (5-fold CV on golden set)
+- `[chunk-6]` strong intents: battery_issue (f1=0.65), app_and_store_issue (f1=0.44)
+- `[chunk-6]` failing intents: device_performance, account_and_password, hardware_and_accessories, product_and_feature_question (f1=0.00)
+- `[chunk-6]` trained final model saved to outputs/tfidf_logreg.pkl; metrics to outputs/metrics_intent_baselines.json
+- `[chunk-6]` updated RESULTS.md with baseline numbers
+- `[chunk-6]` committed and pushed: "chunk 6: intent classifier baselines"
+- `[next]` chunk 7: llm-based intent classifier — few-shot prompting with openai api, eval on golden set
