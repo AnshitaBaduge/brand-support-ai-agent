@@ -1,0 +1,275 @@
+# intents.yaml
+# intent taxonomy for applesupport twitter customer messages.
+# derived from manual review of 300 sampled threads (chunk 4).
+# each intent has: description, keywords, and real examples from the data.
+
+intents:
+
+  - name: software_bug
+    description: >
+      customer reports a bug or unexpected behavior caused by an ios/macos/watchos
+      software update. typically mentions a specific ios version, update, or a
+      clearly reproducible glitch (autocorrect "i" bug, app crashes after update, etc.).
+    keywords:
+      - update
+      - bug
+      - glitch
+      - ios
+      - macos
+      - autocorrect
+      - crash
+      - freeze
+      - after update
+      - since update
+    examples:
+      - "every time you bring out an update something goes wrong with my phone"
+      - "1month ago iOS11 came out and right now the App Store is still buggy"
+      - "when I type the letter i it autocorrects to a question mark box"
+      - "ios11.1 drains battery on my iPhone 7 — FIX IT"
+
+  - name: device_performance
+    description: >
+      customer complains about device slowness, freezing, crashing, or unexpected
+      reboots — not necessarily tied to a specific update. includes app lag,
+      unresponsive screen, or device stuck in reboot loop.
+    keywords:
+      - slow
+      - lag
+      - laggy
+      - freezing
+      - frozen
+      - crashing
+      - restarting
+      - stuck
+      - unresponsive
+      - not responding
+    examples:
+      - "my phone been crashing every 3 minutes regardless of app in use"
+      - "iOS 11 is one of the buggiest pieces of software — any way to roll back?"
+      - "phone is so slow and won't load after update"
+      - "my iphone keeps freezing and not responding"
+
+  - name: battery_issue
+    description: >
+      customer reports excessive battery drain, inaccurate battery percentage,
+      device shutting off at unexpected percentage, or charging problems.
+    keywords:
+      - battery
+      - drain
+      - draining
+      - charge
+      - charging
+      - percent
+      - dead
+      - battery life
+      - power
+    examples:
+      - "my battery just went from 60% to 1% in 15 minutes"
+      - "battery went from 40% to dead overnight"
+      - "iOS 11 drains battery — every update makes it worse"
+      - "phone starts and stops charging every 3 seconds when connected to macbook"
+
+  - name: connectivity_issue
+    description: >
+      customer has problems with wifi, cellular data, bluetooth, airdrop, hotspot,
+      or any wireless/network connectivity feature on their device.
+    keywords:
+      - wifi
+      - wi-fi
+      - bluetooth
+      - cellular
+      - network
+      - no service
+      - airdrop
+      - hotspot
+      - signal
+      - connectivity
+      - connection
+    examples:
+      - "no service in a lot of places — then full bars of LTE and I cannot make calls"
+      - "airdrop doesn't work since iOS 11"
+      - "cellular data suddenly not working on iPhone 8"
+      - "wifi control center won't actually turn off wifi"
+
+  - name: account_and_password
+    description: >
+      customer has issues with their apple id, icloud account, two-factor
+      authentication, forgotten password, account recovery, or signing in/out.
+    keywords:
+      - apple id
+      - icloud
+      - password
+      - account
+      - sign in
+      - log in
+      - two-factor
+      - verification
+      - recovery
+      - locked out
+    examples:
+      - "trying to recover iCloud password on wife's account — waiting since saturday"
+      - "backup encryption password — can't restore without it"
+      - "how can I associate two apple accounts on one device?"
+      - "forgot my apple id password and 2fa is going to a device i don't have"
+
+  - name: payment_and_billing
+    description: >
+      customer reports an unexpected charge, billing error, refund request, gift
+      card issue, payment method problem, or subscription charge they don't recognise.
+    keywords:
+      - charge
+      - charged
+      - refund
+      - billing
+      - credit card
+      - payment
+      - subscription
+      - itunes charge
+      - gift card
+      - invoice
+      - purchase
+    examples:
+      - "random $15 charge to my account from itunes — haven't bought anything"
+      - "got a charge from itunes for $10.85 — I want a refund"
+      - "my credit card isn't going through when I update in the iTunes Store"
+      - "I sent a gift card to my brother in another country and he can't use it"
+
+  - name: hardware_and_accessories
+    description: >
+      customer has a physical hardware problem: broken screen, charging port not
+      working, speaker issues, earphone/headphone problems, buttons not responding,
+      or questions about compatibility of physical accessories.
+    keywords:
+      - speaker
+      - earphones
+      - headphones
+      - charging port
+      - screen
+      - button
+      - volume
+      - camera
+      - microphone
+      - accessory
+      - hardware
+      - broken
+      - physical
+    examples:
+      - "iOS ruined my speaker — everything is really quiet"
+      - "volume buttons on my apple earphones aren't working — only 2-3 weeks old"
+      - "iPhone 5s charging port not working — service center asking for approval"
+      - "help my iphone doesn't pick up my earphones when I plug them in"
+
+  - name: app_and_store_issue
+    description: >
+      customer has problems with a specific app (first-party or third-party),
+      the app store, itunes store, apple music, apple tv+, or icloud storage.
+      includes download errors, app not opening, music not syncing, store outages.
+    keywords:
+      - app store
+      - itunes store
+      - apple music
+      - spotify
+      - facetime
+      - imessage
+      - safari
+      - siri
+      - imovie
+      - app
+      - download
+      - install
+      - subscription
+      - storage
+      - icloud storage
+    examples:
+      - "is the App Store down? Can't access from any of my devices"
+      - "my iTunes account won't let me download a movie — error 3050"
+      - "apple music subscription — will my music stay after it ends?"
+      - "trying to export a video from iMovie for 3 days — still won't work"
+
+  - name: product_and_feature_question
+    description: >
+      customer asks a how-to question, feature availability query, product
+      compatibility question, or general product information request. not a
+      complaint — they want to learn how something works or what exists.
+    keywords:
+      - how do I
+      - how can I
+      - is it possible
+      - does it support
+      - compatible
+      - feature
+      - available
+      - how to
+      - what is
+      - can I
+    examples:
+      - "how do I setup apple pay on my iPhone 5s?"
+      - "is the iPhone X compatible with existing 7 Plus lightning docks?"
+      - "how do I hide/erase iBooks purchases?"
+      - "if I buy the watch with cellular will it work on bluetooth until activated?"
+
+  - name: order_and_delivery
+    description: >
+      customer has questions or complaints about an order, pre-order, shipping,
+      delivery, reservation, or in-store appointment for a product.
+    keywords:
+      - order
+      - delivery
+      - shipped
+      - shipping
+      - pre-order
+      - reservation
+      - iphone x reservation
+      - store appointment
+      - genius bar
+      - tracking
+    examples:
+      - "you wanna explain why my phone wasn't delivered despite leaving a signed release?"
+      - "I have a screenshot saying my iPhone X is reserved for the 3rd then email saying 18th"
+      - "what date/time can I order my new iPhone X in Australia?"
+      - "still no email about my iPhone reservation — my number won't pull a status"
+
+  - name: feedback_and_complaint
+    description: >
+      customer expresses general frustration, dissatisfaction with apple's direction,
+      or leaves feedback about design changes without a specific technical problem.
+      also includes complaints about support quality itself.
+    keywords:
+      - feedback
+      - disappointed
+      - worst
+      - terrible
+      - complain
+      - unacceptable
+      - disappointed
+      - poor quality
+      - losing customers
+      - design
+      - feature request
+    examples:
+      - "what have apple done to iOS — NOTHING WORKS — not premium anymore"
+      - "today I had the worst contact with Senior Apple Advisor — it's a shame"
+      - "I had a great experience at the Genius Bar — want to leave feedback"
+      - "I understand the new design behaved differently but it just isn't friendly"
+
+  - name: data_and_privacy
+    description: >
+      customer has concerns about data loss, data backup/restore, photo deletion,
+      message history loss, privacy settings, or data security on their device.
+    keywords:
+      - data
+      - backup
+      - restore
+      - photos
+      - deleted
+      - lost
+      - privacy
+      - messages
+      - history
+      - contacts
+      - icloud backup
+    examples:
+      - "hi is it possible to go to a store and ask them to backup my old phone?"
+      - "all my message history is deleted"
+      - "none of my photos show in the photos app anymore"
+      - "I deleted someone's contact but their number still shows when I search it"

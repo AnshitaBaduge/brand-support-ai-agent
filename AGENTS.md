@@ -114,4 +114,10 @@ after each meaningful action — code edit, dependency change, dataset preparati
 - `[chunk-3]` output saved to data/cleaned_threads.json (72 MB) with raw + cleaned fields preserved
 - `[chunk-3]` updated RESULTS.md with cleaning stats
 - `[chunk-3]` committed and pushed: "chunk 3: data cleaning pipeline"
-- `[next]` chunk 4: intent discovery — sample ~200 msgs, cluster manually, define 8-12 intents in configs/intents.yaml
+- `[chunk-4]` sampled 300 substantive (non-dm-redirect) customer messages from cleaned_threads.json
+- `[chunk-4]` manually reviewed all 300 samples — identified 12 natural intent clusters
+- `[chunk-4]` created configs/intents.yaml with 12 intents, each with description, keywords, real examples
+- `[chunk-4]` intents: software_bug, device_performance, battery_issue, connectivity_issue, account_and_password, payment_and_billing, hardware_and_accessories, app_and_store_issue, product_and_feature_question, order_and_delivery, feedback_and_complaint, data_and_privacy
+- `[chunk-4]` updated decision_log.md #3 with taxonomy rationale
+- `[chunk-4]` committed and pushed: "chunk 4: intent taxonomy — 12 intents defined in configs/intents.yaml"
+- `[next]` chunk 5: golden set creation — hand-label 150-250 examples with intent + escalation decision

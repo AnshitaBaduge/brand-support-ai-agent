@@ -22,8 +22,26 @@ updated as decisions are made.
 - **approach:** filter to one brand first, then subsample if still too large
 
 ## 3. intent granularity
-- **decision:** _tbd — will define after reading ~200 customer messages_
-- **principle:** intents should be actionable and distinct, not overlapping; 8-12 is the target range
+- **decision:** 12 intents (see configs/intents.yaml)
+- **taxonomy:**
+  1. `software_bug` — ios/macos bugs, glitches, autocorrect issues
+  2. `device_performance` — slow, freezing, crashing (not update-specific)
+  3. `battery_issue` — drain, inaccurate %, charging problems
+  4. `connectivity_issue` — wifi, bluetooth, cellular, airdrop
+  5. `account_and_password` — apple id, icloud, 2fa, recovery
+  6. `payment_and_billing` — unexpected charges, refunds, gift cards
+  7. `hardware_and_accessories` — speaker, earphones, port, screen, buttons
+  8. `app_and_store_issue` — app store, itunes, apple music, siri, facetime
+  9. `product_and_feature_question` — how-to, compatibility, feature queries
+  10. `order_and_delivery` — orders, pre-orders, shipping, reservations
+  11. `feedback_and_complaint` — general dissatisfaction, design opinions
+  12. `data_and_privacy` — backup, restore, photo loss, message deletion
+- **reasoning:** reviewed 300 real customer messages manually; 12 was the natural cluster count
+  that is both actionable and non-overlapping; fewer than 8 would merge very different issues;
+  more than 12 would create intents with only a handful of examples each
+- **note:** `software_bug` and `device_performance` look similar but split cleanly —
+  software_bug is update-triggered and usually version-specific; device_performance is general
+
 
 ## 4. llm choice for classification and generation
 - **decision:** _tbd — will be chosen based on cost, api availability, and quality_
