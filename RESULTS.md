@@ -30,19 +30,6 @@
 
 ---
 
-## status
-
-| component | status | last updated |
-|-----------|--------|-------------|
-| intent classifier (trivial baseline) | ⬜ not started | — |
-| intent classifier (simple baseline) | ⬜ not started | — |
-| intent classifier (llm-based) | ⬜ not started | — |
-| reply generation | ⬜ not started | — |
-| escalation router | ⬜ not started | — |
-| llm-as-judge | ⬜ not started | — |
-| failure analysis | ⬜ not started | — |
-
----
 
 ## intent classification
 
@@ -291,4 +278,4 @@ produces cleaner output than the mock LLM in these cases — evidence that bad L
 
 ---
 
-_this file is updated incrementally. see AGENTS.md work log for the full timeline._
+_this file is updated incrementally._
