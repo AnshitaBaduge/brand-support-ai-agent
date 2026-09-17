@@ -103,13 +103,10 @@ python src/human_judge_agreement.py
 
 ```
 brand-support-ai-agent/
-├── AGENTS.md              — agent handoff + full work log
 ├── BLUEPRINT.pdf          — original assignment spec (read-only)
-├── PLAN.html              — execution plan
 ├── PROJECT.html           — project info, tools, dataset
 ├── README.md              — this file
 ├── RESULTS.md             — full results, failure analysis, misleading headline
-├── decision_log.md        — 12 non-obvious decisions with reasoning
 ├── requirements.txt       — all dependencies
 ├── .env.example           — api key template
 ├── src/
@@ -183,10 +180,6 @@ see [RESULTS.md](RESULTS.md) for the full failure analysis with real examples. s
 6. **reply diversity** — retrieve top-5 and pick best with a re-ranker; filter out dm-redirect replies from candidate pool
 
 ---
-
-## decision log
-
-see [decision_log.md](decision_log.md) for all 12 non-obvious decisions with full reasoning.
 
 ---
 
