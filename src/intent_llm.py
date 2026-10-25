@@ -26,15 +26,30 @@ from sklearn.metrics import accuracy_score, f1_score, classification_report
 
 random.seed(42)
 
+
+def _load_env():
+    """load .env file into os.environ if present."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    env_path = os.path.join(root, ".env")
+    if os.path.exists(env_path):
+        with open(env_path) as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip())
+
+_load_env()
+
 # --- config ---
-MODEL             = "gpt-4o-mini"
+MODEL             = "qwen/qwen3.8-27b"  # groq model; falls back to gpt-4o-mini for openai
 GOLDEN_PATH       = "golden_set/golden_set.csv"
 INTENTS_PATH      = "configs/intents.yaml"
 OUT_PREDS         = "outputs/llm_intent_predictions.json"
 OUT_METRICS       = "outputs/metrics_intent_llm.json"
-SHOTS_PER_INTENT  = 2
+SHOTS_PER_INTENT  = 1        # 1 shot keeps system prompt small (groq tpm limit)
 SUBSAMPLE_N       = 50
-SLEEP_BETWEEN     = 0.3
+SLEEP_BETWEEN     = 7.0      # safe spacing for groq free tier (~6k tpm)
 
 
 def load_golden():
@@ -150,18 +165,27 @@ def run_llm_eval(subsample_n=SUBSAMPLE_N, full=False):
         eval_rows = random.sample(eval_rows, subsample_n)
         print(f"[+] subsampled to:  {len(eval_rows)}")
 
-    # try real api first
-    api_key = os.environ.get("OPENAI_API_KEY", "")
-    use_mock = not api_key
+    # detect provider: groq > openai > mock
+    groq_key   = os.environ.get("GROQ_API_KEY", "")
+    openai_key = os.environ.get("OPENAI_API_KEY", "")
+    use_mock   = not groq_key and not openai_key
+    model_name = MODEL  # groq default
 
     if use_mock:
-        print("\n[!] OPENAI_API_KEY not set — running mock llm (structural validation only)")
+        print("\n[!] no api key found — running mock llm (structural validation only)")
         print("[!] results will be labelled as mock in outputs")
         predict_fn = build_mock_classifier(taxonomy, demos)
+    elif groq_key:
+        from groq import Groq
+        client = Groq(api_key=groq_key)
+        system_prompt = build_system_prompt(intent_names, demos)
+        print(f"[+] provider: groq  model: {model_name}")
     else:
         import openai
-        client = openai.OpenAI(api_key=api_key)
+        client = openai.OpenAI(api_key=openai_key)
+        model_name = "gpt-4o-mini"
         system_prompt = build_system_prompt(intent_names, demos)
+        print(f"[+] provider: openai  model: {model_name}")
 
     predictions = []
     labels_true = []
@@ -177,15 +201,26 @@ def run_llm_eval(subsample_n=SUBSAMPLE_N, full=False):
             if use_mock:
                 pred = predict_fn(msg)
             else:
-                resp = client.chat.completions.create(
-                    model=MODEL,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user",   "content": f'message: "{msg[:300]}"'},
-                    ],
-                    temperature=0,
-                    max_tokens=20,
-                )
+                # retry up to 3 times on rate limit errors
+                for attempt in range(3):
+                    try:
+                        resp = client.chat.completions.create(
+                            model=model_name,
+                            messages=[
+                                {"role": "system", "content": system_prompt},
+                                {"role": "user",   "content": f'message: "{msg[:300]}"'},
+                            ],
+                            temperature=0,
+                            max_tokens=20,
+                        )
+                        break
+                    except Exception as re:
+                        if attempt < 2 and ("429" in str(re) or "rate" in str(re).lower()):
+                            wait = (attempt + 1) * 15
+                            print(f"  rate limit, retrying in {wait}s...")
+                            time.sleep(wait)
+                        else:
+                            raise
                 raw = resp.choices[0].message.content.strip().lower()
                 raw = raw.replace('"','').replace("'","")
                 matched = [n for n in intent_names if n == raw or n in raw or raw in n]
@@ -217,7 +252,8 @@ def run_llm_eval(subsample_n=SUBSAMPLE_N, full=False):
     acc = accuracy_score(labels_true, labels_pred)
     mf1 = f1_score(labels_true, labels_pred, average="macro",    zero_division=0)
     wf1 = f1_score(labels_true, labels_pred, average="weighted", zero_division=0)
-    label_str = f"mock few-shot (no api)" if use_mock else f"llm few-shot ({MODEL})"
+    provider_tag = "mock" if use_mock else ("groq/" + model_name if groq_key else "openai/" + model_name)
+    label_str = "mock few-shot (no api)" if use_mock else f"llm few-shot ({provider_tag})"
 
     print(f"\n{'='*60}")
     print(f"  {label_str}  — n={len(eval_rows)}")
@@ -234,8 +270,7 @@ def run_llm_eval(subsample_n=SUBSAMPLE_N, full=False):
         json.dump(predictions, f, indent=2, ensure_ascii=False)
 
     results = {
-        "model":          label_str,
-        "mode":           "mock" if use_mock else "api",
+        "model":          label_str,        "mode":           "mock" if use_mock else "api",
         "n_eval":         len(eval_rows),
         "n_demos":        len(demos),
         "shots_per_intent": SHOTS_PER_INTENT,
