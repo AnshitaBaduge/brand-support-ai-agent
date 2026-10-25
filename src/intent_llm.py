@@ -37,7 +37,7 @@ def _load_env():
                 line = line.strip()
                 if line and not line.startswith("#") and "=" in line:
                     k, v = line.split("=", 1)
-                    os.environ.setdefault(k.strip(), v.strip())
+                    os.environ[k.strip()] = v.strip()  # always override; .env takes priority
 
 _load_env()
 
@@ -211,7 +211,7 @@ def run_llm_eval(subsample_n=SUBSAMPLE_N, full=False):
                                 {"role": "user",   "content": f'message: "{msg[:300]}"'},
                             ],
                             temperature=0,
-                            max_tokens=20,
+                            max_tokens=50,
                         )
                         break
                     except Exception as re:
