@@ -51,15 +51,14 @@ _not yet implemented._
 - fails on: `device_performance`, `account_and_password`, `hardware_and_accessories`, `product_and_feature_question` (f1=0.00)
 - root cause: keyword overlap between intents (e.g. "update" appears in battery, software_bug, device_performance) + too few examples for thin classes
 
-### llm-based classifier (few-shot, mock mode)
-- model: gpt-4o-mini (mock fallback — no api key during development)
-- 2 few-shot demos per intent (24 total drawn from golden set)
-- evaluated on 50-example stratified subsample of remaining eval rows
-- mock uses keyword scoring + jaccard similarity to demo examples
-- **accuracy: 0.5800, macro-f1: 0.5105** (n=50, mock mode)
-- note: mock results are a structural approximation — real gpt-4o-mini will score higher
-- strong intents (mock): account_and_password (f1=0.86), battery_issue (f1=0.80), order_and_delivery (f1=0.86)
-- weak intents: software_bug (f1=0.00 — overwhelmed by similar intents), product_and_feature_question (0 support in subsample)
+### llm-based classifier (few-shot, groq/qwen3.8-27b)
+- model: qwen/qwen3.8-27b via groq api (real inference, not mock)
+- 1 few-shot demo per intent (12 total drawn from golden set)
+- evaluated on full 228-row eval set (all golden set minus demos)
+- **accuracy: 0.7412, macro-f1: 0.6903** (n=228, real api)
+- api errors: 5/228 (rate limit retries handled gracefully)
+- strong intents: battery_issue (f1=0.94), connectivity_issue (f1=0.86), payment_and_billing (f1=0.87)
+- weak intents: device_performance (f1=0.30), product_and_feature_question (f1=0.25 — only 3 examples)
 
 ### comparison table
 
@@ -67,8 +66,8 @@ _not yet implemented._
 |-------|----------|----------|-------------|-------|
 | trivial (majority class) | 0.2083 | 0.0287 | 0.0718 | predicts software_bug always |
 | tfidf + logreg (5-fold cv) | 0.3292 | 0.1872 | 0.2581 | strong on battery/app; fails thin classes |
-| llm few-shot (mock, n=50) | 0.5800 | 0.5105 | 0.5546 | mock — real api will score higher |
-
+| llm few-shot (mock, n=50) | 0.5800 | 0.5105 | 0.5546 | mock baseline — structural approximation only |
+| **llm few-shot (groq/qwen, n=228)** | **0.7412** | **0.6903** | **0.7335** | **real api — best result** |
 ---
 
 ## reply generation
