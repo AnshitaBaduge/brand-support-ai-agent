@@ -31,11 +31,26 @@ from rouge_score import rouge_scorer
 
 random.seed(42)
 
+
+def _load_env():
+    """load .env file into os.environ — .env always takes priority."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    env_path = os.path.join(root, ".env")
+    if os.path.exists(env_path):
+        with open(env_path) as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ[k.strip()] = v.strip()  # always override
+
+_load_env()
+
 REPLY_OUT_PATH   = "outputs/reply_outputs.json"
 EVAL_OUT_PATH    = "outputs/metrics_reply_eval.json"
 JUDGE_OUT_PATH   = "outputs/judge_scores.json"
 JUDGE_SUBSAMPLE  = 30
-SLEEP_BETWEEN    = 0.4
+SLEEP_BETWEEN    = 5.0   # safe spacing for groq free tier
 
 RUBRIC_DIMENSIONS = ["tone", "helpfulness", "accuracy", "safety"]
 
@@ -204,7 +219,7 @@ def llm_judge(client, customer_msg: str, draft: str, intent: str, model: str) ->
             {"role": "user",   "content": user_msg},
         ],
         temperature=0,
-        max_tokens=80,
+        max_tokens=200,  # enough for json + any thinking prefix
     )
     raw = resp.choices[0].message.content.strip()
     try:
@@ -220,13 +235,22 @@ def llm_judge(client, customer_msg: str, draft: str, intent: str, model: str) ->
 
 def run_judge(outputs, subsample_n=JUDGE_SUBSAMPLE, full=False):
     """run llm-as-judge on outputs, return scored rows + dimension averages."""
-    api_key  = os.environ.get("OPENAI_API_KEY", "")
-    use_mock = not api_key
-    model    = "gpt-4o-mini"
+    # detect provider: groq > openai > mock
+    groq_key   = os.environ.get("GROQ_API_KEY", "")
+    openai_key = os.environ.get("OPENAI_API_KEY", "")
+    use_mock   = not groq_key and not openai_key
+    model      = "qwen/qwen3.8-27b"  # groq default
 
     if not use_mock:
-        import openai
-        client = openai.OpenAI(api_key=api_key)
+        if groq_key:
+            from groq import Groq
+            client = Groq(api_key=groq_key)
+            print(f"[+] provider: groq  model: {model}")
+        else:
+            import openai
+            client = openai.OpenAI(api_key=openai_key)
+            model  = "gpt-4o-mini"
+            print(f"[+] provider: openai  model: {model}")
 
     # select rows to judge — subsample if requested
     rows_to_judge = outputs
@@ -248,8 +272,19 @@ def run_judge(outputs, subsample_n=JUDGE_SUBSAMPLE, full=False):
             mode   = "mock"
         else:
             try:
-                scores = llm_judge(client, msg, draft, intent, model)
-                mode   = model
+                # retry up to 3 times on rate limit errors
+                for attempt in range(3):
+                    try:
+                        scores = llm_judge(client, msg, draft, intent, model)
+                        break
+                    except Exception as re:
+                        if attempt < 2 and ("429" in str(re) or "rate" in str(re).lower()):
+                            wait = (attempt + 1) * 15
+                            print(f"  rate limit, retrying in {wait}s...")
+                            time.sleep(wait)
+                        else:
+                            raise
+                mode = model
                 time.sleep(SLEEP_BETWEEN)
             except Exception as e:
                 scores = {"tone":3,"helpfulness":3,"accuracy":3,"safety":5,

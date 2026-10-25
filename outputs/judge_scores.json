@@ -1,13 +1,13 @@
 {
-  "mode": "mock",
+  "mode": "qwen/qwen3.8-27b",
   "n": 30,
   "dimension_averages": {
-    "tone": 2.733,
-    "helpfulness": 2.8,
-    "accuracy": 4.0,
+    "tone": 2.867,
+    "helpfulness": 1.567,
+    "accuracy": 2.9,
     "safety": 5.0
   },
-  "overall_avg": 3.633,
+  "overall_avg": 3.083,
   "rows": [
     {
       "id": "gs_164",
@@ -16,12 +16,12 @@
       "draft": "We want to help with your order. We have received your DM. Let's continue from there. You can also click the link below.",
       "scores": {
         "tone": 3,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "helpfulness": 1,
+        "accuracy": 2,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is unhelpful and vague, failing to address the specific 43-hour delay or provide any concrete next steps, while the reference to a 'link below' is likely a hallucination or error in this context."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_029",
@@ -30,12 +30,12 @@
       "draft": "We'd be glad to help with this app issue. Do you have issues with all Bluetooth devices or just this one? Please reply i",
       "scores": {
         "tone": 3,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "helpfulness": 1,
+        "accuracy": 1,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is completely irrelevant to the customer's statement about a deleted preloaded app, instead asking unrelated questions about Bluetooth devices."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_007",
@@ -43,13 +43,13 @@
       "customer_msg": "Awesome thanks for the quick reply",
       "draft": "We always want to improve your experience. You're welcome. Let us know the result once you're able to test it out after ",
       "scores": {
-        "tone": 2,
+        "tone": 4,
         "helpfulness": 2,
-        "accuracy": 4,
+        "accuracy": 5,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The tone is professional and warm, but the helpfulness is low because the customer's message was a simple thank-you/closure, yet the reply awkwardly references unmentioned 'changes' and asks for a result, which is unnecessary and potentially confusing."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_190",
@@ -57,13 +57,13 @@
       "customer_msg": "That’s still more steps than before. You can’t tap on “Done” until after you open the picture up from the bottom left of",
       "draft": "Great question! Hey, we can look into some options for your iPhone X. We know it's not ideal to hear unexpected sounds c",
       "scores": {
-        "tone": 3,
-        "helpfulness": 4,
-        "accuracy": 4,
+        "tone": 2,
+        "helpfulness": 1,
+        "accuracy": 1,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is completely irrelevant to the customer's complaint about the photo interface, hallucinates a problem with unexpected sounds, and fails to address the specific UI issue mentioned."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_071",
@@ -71,13 +71,13 @@
       "customer_msg": "Same here, diff. is my phone is just an iphone 6. Apps like facebook does not load data, all is just white. Uninstalling",
       "draft": "We'd be glad to help with this app issue. If you're having an issue with the battery life on your device, we'd like to h",
       "scores": {
-        "tone": 3,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "tone": 2,
+        "helpfulness": 1,
+        "accuracy": 1,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is completely off-topic, addressing battery life instead of the reported app loading and performance issues, and provides no actionable guidance."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_063",
@@ -87,11 +87,11 @@
       "scores": {
         "tone": 4,
         "helpfulness": 3,
-        "accuracy": 4,
+        "accuracy": 5,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is professional and safe, but it lacks empathy for the customer's frustration and provides a generic next step (DM) rather than immediate actionable guidance or specific repair options."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_058",
@@ -99,13 +99,13 @@
       "customer_msg": "can I ask about a rather dodgy txt I’ve had about my Apple ID about to expire",
       "draft": "Account access is critical. We’d like to see how we can help. Can you DM us some more details about the issue you're hav",
       "scores": {
-        "tone": 3,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "tone": 4,
+        "helpfulness": 2,
+        "accuracy": 5,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The tone is professional and empathetic, but the reply fails to address the specific concern about a suspicious text message (phishing) or provide immediate safety advice, making it only moderately helpful."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_036",
@@ -113,13 +113,13 @@
       "customer_msg": "Dear I can turn my own Bluetooth&wifi on/off.. and please give me back my ringer volume buttons. K thanks",
       "draft": "We can look into this connectivity issue with you. Thanks for reaching out. We have a workaround for this here: DM us if",
       "scores": {
-        "tone": 3,
-        "helpfulness": 4,
-        "accuracy": 4,
+        "tone": 2,
+        "helpfulness": 1,
+        "accuracy": 2,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is unhelpful because it claims to have a workaround but fails to provide it, instead asking the user to DM for help, which is not a concrete next step for the stated issue."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_189",
@@ -127,13 +127,13 @@
       "customer_msg": "I do not care about 70 new emoji ios11.1 does not fix my battery life. 🔋how bad it is since I updated ios11!🤬🤯",
       "draft": "Battery life is important to us. See our guide for improved battery life here: Please send us a DM if we can help furthe",
       "scores": {
-        "tone": 2,
-        "helpfulness": 4,
+        "tone": 3,
+        "helpfulness": 2,
         "accuracy": 4,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is professional but lacks empathy for the customer's frustration and provides a generic link rather than specific troubleshooting steps for the iOS 11 update issue."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_027",
@@ -141,13 +141,13 @@
       "customer_msg": "Hey I️ would really appreciate it if you can fix my I️ on my texts, emails and messaging. I️ am feeling like it should b",
       "draft": "We'd like to help with this update issue. Here’s what you can do to work around the issue until it’s fixed in a future s",
       "scores": {
-        "tone": 2,
-        "helpfulness": 2,
-        "accuracy": 4,
+        "tone": 3,
+        "helpfulness": 1,
+        "accuracy": 2,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is generic and fails to provide the promised workaround or address the specific 'I' character issue, making it unhelpful and potentially inaccurate by implying a future fix without context."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_174",
@@ -155,13 +155,13 @@
       "customer_msg": "can you please fix this I️ problem it’s getting a little annoying and hard to look professional via email to my colleagu",
       "draft": "We'd like to help with this update issue. Here’s what you can do to work around the issue until it’s fixed in a future s",
       "scores": {
-        "tone": 2,
-        "helpfulness": 2,
-        "accuracy": 4,
+        "tone": 3,
+        "helpfulness": 1,
+        "accuracy": 2,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is professional but fails to provide the promised workaround or any actionable steps, making it unhelpful and incomplete."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_237",
@@ -170,12 +170,12 @@
       "draft": "We'd be happy to assist with your billing concern. Great Question! We have a team who can help see what options are avai",
       "scores": {
         "tone": 4,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "helpfulness": 2,
+        "accuracy": 3,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The tone is professional and warm, but the reply is unhelpful because it fails to answer the specific question about gift card eligibility and instead provides a broken link placeholder ('here:') without a URL or concrete next step."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_140",
@@ -184,12 +184,12 @@
       "draft": "We'd like to help with this update issue. Let's see if updating to iOS 11.0.3 helps:",
       "scores": {
         "tone": 2,
-        "helpfulness": 2,
-        "accuracy": 4,
+        "helpfulness": 1,
+        "accuracy": 1,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is factually incorrect as it suggests installing iOS on a MacBook Air, which runs macOS, and fails to address the customer's specific hardware malfunction with any relevant troubleshooting steps."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_023",
@@ -198,12 +198,12 @@
       "draft": "We always want to improve your experience. Understood. If this is only happening when viewing posts on social media, thi",
       "scores": {
         "tone": 2,
-        "helpfulness": 2,
-        "accuracy": 4,
+        "helpfulness": 1,
+        "accuracy": 1,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is factually nonsensical (claiming a software bug is isolated to a social media user's device), fails to address the customer's complaint about Apple software, and uses a robotic, dismissive tone."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_152",
@@ -212,12 +212,12 @@
       "draft": "Battery life is important to us. Thanks. Under Settings>General>Background App Refresh, is Weather toggled on?",
       "scores": {
         "tone": 2,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "helpfulness": 2,
+        "accuracy": 3,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is overly brief and lacks empathy for the user's frustration, while the specific troubleshooting step regarding the Weather app is a plausible but narrow fix that doesn't address the broader context of the iOS 11.1 update or provide a clear path to resolution if that setting is already off."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_109",
@@ -226,12 +226,12 @@
       "draft": "We'd be happy to assist with your billing concern. We can get you pointed in the right direction. For billing issues get",
       "scores": {
         "tone": 3,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "helpfulness": 1,
+        "accuracy": 2,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is polite but completely unhelpful as it fails to provide the promised link or any concrete next steps, and the phrasing 'get to the experts here' is awkward and incomplete."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_009",
@@ -239,13 +239,13 @@
       "customer_msg": "Yep I use it, can access photos from browser if I log into",
       "draft": "Data loss is a priority for us. What happens when you try to access Apple Pay? Please provide as many details as you can",
       "scores": {
-        "tone": 3,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "tone": 2,
+        "helpfulness": 1,
+        "accuracy": 1,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is completely irrelevant to the customer's statement about accessing photos, hallucinates a problem with Apple Pay, and fails to address the data/privacy intent."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_008",
@@ -253,13 +253,13 @@
       "customer_msg": "Hey is there any reason for suddenly losing 300+ GB from the 512 GB internal flash HDD on an MBP late 2013? On reboot I'",
       "draft": "We'd like to get your device running smoothly. We can help. Let's get more information from you in DM. Reach out there t",
       "scores": {
-        "tone": 3,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "tone": 2,
+        "helpfulness": 1,
+        "accuracy": 5,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is unhelpful because it fails to address the critical data loss issue or provide any immediate troubleshooting steps, instead just asking the user to move to DMs without acknowledging the severity of the situation."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_024",
@@ -267,13 +267,13 @@
       "customer_msg": "even after restarting, its still doing it. i’ll try redownloading it in a moment!",
       "draft": "We'd be glad to help with this app issue. Are you only seeing this in other people's messages or does this happen when y",
       "scores": {
-        "tone": 3,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "tone": 4,
+        "helpfulness": 2,
+        "accuracy": 5,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The tone is professional and on-brand, but the reply is unhelpful because it asks a clarifying question about a specific symptom (messages) that was not mentioned in the customer's vague complaint, and it ignores the customer's stated plan to redownload the app."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_056",
@@ -282,12 +282,12 @@
       "draft": "We'd be glad to help with this app issue. We'd like you to restart your iPhone, and then meet us in DM to let us know if",
       "scores": {
         "tone": 3,
-        "helpfulness": 3,
+        "helpfulness": 2,
         "accuracy": 4,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is safe and professional but unhelpful because it asks the customer to repeat a step they already stated they tried, and it ends with a colon instead of a proper closing or clear next step."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_060",
@@ -295,13 +295,13 @@
       "customer_msg": "I got an email says I made a purchase I did not do. I got a pdf",
       "draft": "We'd be happy to assist with your billing concern. You did the right thing by reaching out to us. We're happy to help. N",
       "scores": {
-        "tone": 3,
+        "tone": 2,
         "helpfulness": 2,
-        "accuracy": 4,
+        "accuracy": 2,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is contradictory and unhelpful, abruptly stating the email is invalid without verifying the user's claim or providing a link to the mentioned article, which fails to address the potential security risk or billing issue effectively."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_130",
@@ -310,12 +310,12 @@
       "draft": "Account access is critical. Thanks for getting in touch! We'd love to talk to you about this more. DM us more details ab",
       "scores": {
         "tone": 4,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "helpfulness": 2,
+        "accuracy": 5,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The tone is professional and empathetic, and the request for context is accurate for routing purposes, but the reply lacks immediate helpfulness by not providing the direct self-service link or steps to delete the account, forcing the user into a potentially slower DM process for a task that can often be done independently."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_155",
@@ -324,12 +324,12 @@
       "draft": "We want to help with your order. Thanks for reaching out! For questions about pre-orders, reach out to our Online Store ",
       "scores": {
         "tone": 4,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "helpfulness": 2,
+        "accuracy": 3,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The tone is professional and warm, but the reply is unhelpful because it fails to answer the specific question about the pre-order start date and instead directs the user to a generic link without providing the requested information."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_238",
@@ -337,13 +337,13 @@
       "customer_msg": "I keep having to retype my WiFi password like 5 times a day??? It should just be saved no? I’m confused as to why it kee",
       "draft": "We can look into this connectivity issue with you. We'd like to help out. Does this happen when you enter text or when v",
       "scores": {
-        "tone": 2,
-        "helpfulness": 3,
-        "accuracy": 4,
+        "tone": 3,
+        "helpfulness": 2,
+        "accuracy": 2,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is safe and professional but fails to address the specific WiFi password issue, instead asking irrelevant questions about text input and viewing text from other devices, which suggests a misunderstanding of the problem."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_144",
@@ -352,12 +352,12 @@
       "draft": "We'd like to get your device running smoothly. We want to help! Which model of iOS device are you currently using? What ",
       "scores": {
         "tone": 3,
-        "helpfulness": 2,
-        "accuracy": 4,
+        "helpfulness": 1,
+        "accuracy": 5,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is safe and professional but fails to address the specific issues (slowness and battery) mentioned by the customer, instead asking redundant questions that ignore the provided context."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_051",
@@ -366,12 +366,12 @@
       "draft": "We can look into this connectivity issue with you. Thanks for confirming. DM us how long you've had the update installed",
       "scores": {
         "tone": 3,
-        "helpfulness": 4,
+        "helpfulness": 2,
         "accuracy": 4,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is professional but lacks empathy for the customer's frustration, and the request for country and update duration is vague and potentially unnecessary for initial troubleshooting, making it only moderately helpful."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_184",
@@ -379,13 +379,13 @@
       "customer_msg": "my phone worked perfectly until iOS 11 came out. Since then I’ve had tons of problems.",
       "draft": "We'd like to help with this update issue. Let's take a look at this together. Does it freeze on one particular app? Whic",
       "scores": {
-        "tone": 2,
+        "tone": 4,
         "helpfulness": 3,
-        "accuracy": 4,
+        "accuracy": 5,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The tone is professional and empathetic, and the request for specific details (model, specific app) is a valid troubleshooting step, though it could be more proactive by suggesting a general reset or update check first."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_167",
@@ -394,12 +394,12 @@
       "draft": "Account access is critical. Best way to download it all: 1) Make a new playlist & put everything in the library in that.",
       "scores": {
         "tone": 2,
-        "helpfulness": 2,
-        "accuracy": 4,
+        "helpfulness": 1,
+        "accuracy": 1,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is unhelpful and factually flawed because it suggests creating a playlist to 'download' music, which is not a valid method for recovering or transferring a library, and it completely ignores the user's stated problem of being associated with the wrong account."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_180",
@@ -408,12 +408,12 @@
       "draft": "Battery life is important to us. Can you tell us more about the alarm issues your facing? Are they from the Clock app? D",
       "scores": {
         "tone": 2,
-        "helpfulness": 2,
-        "accuracy": 4,
+        "helpfulness": 1,
+        "accuracy": 1,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply completely ignores the reported battery swelling issue and instead asks irrelevant questions about alarm settings, making it unhelpful and factually disconnected from the customer's problem."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     },
     {
       "id": "gs_228",
@@ -425,9 +425,9 @@
         "helpfulness": 2,
         "accuracy": 4,
         "safety": 5,
-        "reasoning": "mock scorer — proxy signals for tone/helpfulness/accuracy/safety"
+        "reasoning": "The reply is factually safe and asks relevant diagnostic questions, but it fails to acknowledge the customer's significant emotional distress regarding the loss of messages with a deceased family member, making the tone feel cold and robotic rather than empathetic and on-brand for Apple support."
       },
-      "mode": "mock"
+      "mode": "qwen/qwen3.8-27b"
     }
   ]
 }
