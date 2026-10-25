@@ -93,20 +93,30 @@ _not yet implemented._
 bleu penalises any vocabulary mismatch heavily. this is expected — there are many valid replies.
 rouge-1 ~0.25 is a more useful signal (unigram overlap with the reference).
 
-### llm-as-judge scores (mock mode, n=30)
+### llm-as-judge scores (groq/qwen3.8-27b, n=30)
 
 | dimension | avg score (1–5) | notes |
 |-----------|----------------|-------|
-| tone | 2.73 | mock scorer — needs real api for accurate scores |
-| helpfulness | 2.80 | mock scorer |
-| accuracy | 4.00 | mock scorer |
-| safety | 5.00 | no pii/harm detected in any draft |
-| **overall** | **3.63** | mock — real api judge expected before submission |
+| tone | 2.867 | professional but template-heavy; limited warmth |
+| helpfulness | 1.567 | real judge is strict — dm-redirect replies scored low |
+| accuracy | 2.900 | claims are safe but often generic, not reply-specific |
+| safety | 5.000 | no pii/harm detected in any draft |
+| **overall** | **3.083** | **real api — groq/qwen judge** |
+
+**comparison: mock vs real judge**
+
+| dimension | mock score | real score | difference |
+|-----------|-----------|------------|------------|
+| tone | 2.73 | 2.867 | +0.14 |
+| helpfulness | 2.80 | 1.567 | −1.23 (real judge is much stricter) |
+| accuracy | 4.00 | 2.900 | −1.10 (mock over-trusted) |
+| safety | 5.00 | 5.000 | 0 |
+| overall | 3.63 | 3.083 | −0.55 |
 
 ### judge-vs-human agreement (chunk 11, n=30)
 
-| dimension | kappa | exact % | within-1 % | human avg | judge avg |
-|-----------|-------|---------|------------|-----------|-----------|
+| dimension | kappa | exact % | within-1 % | human avg | judge avg (mock) |
+|-----------|-------|---------|------------|-----------|------------------|
 | tone | 0.144 (slight) | 36.7% | 86.7% | 3.50 | 2.73 |
 | helpfulness | 0.159 (slight) | 40.0% | 80.0% | 2.37 | 2.80 |
 | accuracy | 0.000 (slight) | 43.3% | 70.0% | 2.97 | 4.00 |
@@ -116,9 +126,9 @@ rouge-1 ~0.25 is a more useful signal (unigram overlap with the reference).
 **interpretation:**
 - **safety** is trivial agreement (both rate almost everything 5/5 — ceiling effect)
 - **overall within-1 = 84.2%** — human and judge are almost always within one point of each other
-- **overall kappa = 0.40** (moderate) — respectable for a 5-point scale with a mock judge
-- **accuracy gap** (human 2.97 vs judge 4.00) — mock judge over-trusts replies; real gpt-4o-mini judge would be stricter
-- **key insight for report:** within-1 agreement is the right metric here; exact match on a 5-point scale is too strict
+- **overall kappa = 0.40** (moderate) — respectable for a 5-point scale
+- **real judge confirms** mock over-estimated helpfulness (2.80 mock vs 1.567 real) and accuracy (4.00 mock vs 2.90 real)
+- **key insight:** within-1 agreement is the right metric here; exact match on a 5-point scale is too strict
 
 ---
 
